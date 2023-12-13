@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent</title>
+    <link rel="stylesheet" href="style_rent.css">
+</head>
+<body>
+    <header>
+        <h2 class="rent">Rental</h2>
+        <nav class="navigation">
+            <a href="../login/login.html">Home</a>
+            <a href="rent.html">Wypożycz</a>
+            <a href="../contact/contact.html">Kontakt</a>
+            <button class="btnLogin-popup">Login</button>
+        </nav>
+    </header>
+    <div class="bottom-margin">
+        <button class="list-button" href="{$conf->action_root}rentNew">Wypożycz</button>
+    </div>	
+
+    <div class="bottom-margin">
+        <form class="pure-form pure-form-stacked" action="{$conf->action_url}rentList">
+            <legend>Opcje wyszukiwania</legend>
+            <fieldset>
+                <input type="text" placeholder="nazwisko" name="sf_surname" value="{$searchForm->surname}" /><br />
+                <button type="submit" class="pure-button pure-button-primary">Filtruj</button>
+            </fieldset>
+        </form>
+    </div>	
+
+    <table id="tab_people" class="pure-table pure-table-bordered">
+        <thead>
+            <tr>
+                <th>imię</th>
+                <th>nazwisko</th>
+                <th>data ur.</th>
+                <th>opcje</th>
+            </tr>
+        </thead>
+        <tbody>
+        {foreach $people as $p}
+        {strip}
+            <tr>
+                <td>{$p["name"]}</td>
+                <td>{$p["surname"]}</td>
+                <td>{$p["birthdate"]}</td>
+                <td>
+                    <a class="button-small pure-button button-secondary" href="{$conf->action_url}personEdit/{$p['idperson']}">Edytuj</a>
+                    &nbsp;
+                    <a class="button-small pure-button button-warning" href="{$conf->action_url}personDelete/{$p['idperson']}">Usuń</a>
+                </td>
+            </tr>
+        {/strip}
+        {/foreach}
+        </tbody>
+        </table>
+
+    
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

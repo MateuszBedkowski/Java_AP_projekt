@@ -1,0 +1,26 @@
+INDEX VERSION 1.134+/home/mateusz/Documents/Studia/Java_AP/projekt/.metadata/.plugins/org.eclipse.jdt.core
+1134964650.index
+1029100815.index
+1658905077.index
+4244686566.index
+178770854.index
+1963885414.index
+2974111423.index
+2301376516.index
+1029991903.index
+3905806394.index
+387498220.index
+1979758325.index
+668455776.index
+736749296.index
+3178193835.index
+120207532.index
+1865797976.index
+2038753235.index
+2966949011.index
+3805678138.index
+286675925.index
+3484866698.index
+1443620936.index
+2269124146.index
+2622100826.index

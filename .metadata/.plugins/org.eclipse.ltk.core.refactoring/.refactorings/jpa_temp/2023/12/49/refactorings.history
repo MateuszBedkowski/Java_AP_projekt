@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;src&apos; to &apos;jsf_06_ejb&apos;&#x0A;- Original project: &apos;jpa_temp&apos;&#x0A;- Destination element: &apos;jsf_06_ejb&apos;&#x0A;- Original element: &apos;src&apos;" description="Copy folder" element1="src" files="0" flags="589830" folders="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1702120431828" target="/jsf_06_ejb" units="0" version="1.0"/>
+</session>
