@@ -19,7 +19,7 @@ import com.jsf.entities.Person;
 @Named
 @RequestScoped
 public class PersonListBB {
-	private static final String PAGE_PERSON_EDIT = "personEdit?faces-redirect=true";
+	private static final String PAGE_RENT_EDIT = "rentEdit?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
 	private String surname;
@@ -71,7 +71,7 @@ public class PersonListBB {
 		//2. Pass object through flash	
 		flash.put("person", person);
 		
-		return PAGE_PERSON_EDIT;
+		return PAGE_RENT_EDIT;
 	}
 
 	public String editPerson(Person person){
@@ -82,7 +82,7 @@ public class PersonListBB {
 		//2. Pass object through flash 
 		flash.put("person", person);
 		
-		return PAGE_PERSON_EDIT;
+		return PAGE_RENT_EDIT;
 	}
 
 	public String deletePerson(Person person){

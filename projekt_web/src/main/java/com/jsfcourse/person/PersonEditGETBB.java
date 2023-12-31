@@ -18,7 +18,7 @@ import com.jsf.entities.Person;
 public class PersonEditGETBB implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private static final String PAGE_PERSON_LIST = "personList?faces-redirect=true";
+	private static final String PAGE_RENT_LIST = "rentList?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
 	private Person person = new Person();
@@ -43,10 +43,10 @@ public class PersonEditGETBB implements Serializable {
 				person = loaded;
 			} else {
 				context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Błędne użycie systemu", null));
-				// if (!context.isPostback()) { // possible redirect
-				// context.getExternalContext().redirect("personList.xhtml");
-				// context.responseComplete();
-				// }
+				if (!context.isPostback()) { // possible redirect
+					context.getExternalContext().redirect("rentList.xhtml");
+					context.responseComplete();
+				}
 			}
 		}
 
@@ -73,6 +73,6 @@ public class PersonEditGETBB implements Serializable {
 			return PAGE_STAY_AT_THE_SAME;
 		}
 
-		return PAGE_PERSON_LIST;
+		return PAGE_RENT_LIST;
 	}
 }

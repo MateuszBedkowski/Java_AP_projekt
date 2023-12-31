@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<f:metadata>
+    <f:viewAction action="#{personEditBB.onLoad()}" />
+</f:metadata>
+
+<h:head>
+	<meta charset="utf-8"/>
+	<title>Rent edit</title>
+	<link rel="stylesheet" href="Styles/Styles_rent/style.css"/>
+</h:head>
+
+<h:body style="background-color: #eee; margin: 0.5em;">
+
+	<p:panel toggleable="true" header="Rent Edit">
+
+		<h:form rendered="#{personEditBB.person != null}">
+			<h:panelGrid columns="3" cellpadding="5">
+
+				<h:outputLabel for="p-name" value="Rent ID" />
+				<p:inputText id="p-name" value="#{personEditBB.person.name}"
+					required="true" requiredMessage="Podaj imię"
+					validatorMessage="co najwyżej 40 znaków">
+					<f:validateLength maximum="40" />
+				</p:inputText>
+				<p:message for="p-name" display="icon"/>
+
+				<h:outputLabel for="p-date" value="Start date" />
+				<p:inputText id="p-date" value="#{personEditBB.person.birthdate}"
+					required="true" requiredMessage="podaj datę urodzenia"
+					converterMessage="niepoprawny format daty (np. 15-07-2018)">
+					<f:convertDateTime pattern="dd-MM-yyyy"/>
+			    </p:inputText>
+				<p:message for="p-date" display="icon"/>
+
+				<!--<h:outputLabel for="p-date" value="End date" />
+				<p:inputText id="p-date" value="#{personEditBB.person.birthdate}"
+					required="true" requiredMessage="podaj datę urodzenia"
+					converterMessage="niepoprawny format daty (np. 15-07-2018)">
+					<f:convertDateTime pattern="dd-MM-yyyy"/>
+			    </p:inputText>
+				<p:message for="p-date" display="icon"/>
+								
+				<h:outputLabel for="p-name" value="Amount" />
+				<p:inputText id="p-name" value="#{personEditBB.person.name}"
+					required="true" requiredMessage="Podaj imię"
+					validatorMessage="co najwyżej 40 znaków">
+					<f:validateLength maximum="40" />
+				</p:inputText>
+				<p:message for="p-name" display="icon"/>
+				
+				<h:outputLabel for="p-name" value="Client ID" />
+				<p:inputText id="p-name" value="#{personEditBB.person.name}"
+					required="true" requiredMessage="Podaj imię"
+					validatorMessage="co najwyżej 40 znaków">
+					<f:validateLength maximum="40" />
+				</p:inputText>
+				<p:message for="p-name" display="icon"/>
+				
+				<h:outputLabel for="p-name" value="Car ID" />
+				<p:inputText id="p-name" value="#{personEditBB.person.name}"
+					required="true" requiredMessage="Podaj imię"
+					validatorMessage="co najwyżej 40 znaków">
+					<f:validateLength maximum="40" />
+				</p:inputText>
+				<p:message for="p-name" display="icon"/>
+				
+				<h:outputLabel for="p-name" value="Employee ID" />
+				<p:inputText id="p-name" value="#{personEditBB.person.name}"
+					required="true" requiredMessage="Podaj imię"
+					validatorMessage="co najwyżej 40 znaków">
+					<f:validateLength maximum="40" />
+				</p:inputText>
+				<p:message for="p-name" display="icon"/>-->
+				
+			</h:panelGrid>
+
+			<p:messages id="msgs" />
+
+			<p:commandButton value="Zapisz" action="#{personEditBB.saveData()}"
+				style="margin-right: 1em;" update="@form" />
+
+			<p:button value="Anuluj" outcome="rentList" />
+		</h:form>
+
+	</p:panel>
+
+</h:body>
+
+</html>

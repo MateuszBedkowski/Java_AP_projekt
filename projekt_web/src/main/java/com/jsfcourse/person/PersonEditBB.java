@@ -20,7 +20,7 @@ import com.jsf.entities.Person;
 public class PersonEditBB implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private static final String PAGE_PERSON_LIST = "personList?faces-redirect=true";
+	private static final String PAGE_RENT_LIST = "rentList?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
 	private Person person = new Person();
@@ -82,6 +82,6 @@ public class PersonEditBB implements Serializable {
 			return PAGE_STAY_AT_THE_SAME;
 		}
 
-		return PAGE_PERSON_LIST;
+		return PAGE_RENT_LIST;
 	}
 }

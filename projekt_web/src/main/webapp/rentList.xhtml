@@ -1,65 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Rent</title>
-    <link rel="stylesheet" href="Styles/Styles_rent/style.css"/>
-</head>
-<body>
-    <header>
-        <h2 class="rent">Rental</h2>
-        <nav class="navigation">
-            <a href="login.xhtml">Home</a>
-            <a href="rent.xhtml">Rent</a>
-            <a href="contact.xhtml">Contact</a>
-            <button class="btnLogin-popup">Login</button>
-        </nav>
-    </header>
-    <div class="bottom-margin">
-        <button class="list-button" href="{$conf->action_root}rentNew">Wypożycz</button>
-    </div>	
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <div class="bottom-margin">
-        <form class="pure-form pure-form-stacked" action="{$conf->action_url}rentList">
-            <legend>Opcje wyszukiwania</legend>
-            <fieldset>
-                <input type="text" placeholder="nazwisko" name="sf_surname" value="{$searchForm->nazwisko}" /><br />
-                <button type="submit" class="pure-button pure-button-primary">Filtruj</button>
-            </fieldset>
-        </form>
-    </div>	
+<h:head>
+	<meta charset="utf-8" />
+	<title>Rent List</title>
+	<link rel="stylesheet" href="Styles/Styles_rent/style.css"/>
+</h:head>
+<h:body style="margin-left: 0.5em; margin-right: 0.5em;">
 
-    <table id="tab_people" class="pure-table pure-table-bordered">
-        <thead>
-            <tr>
-                <th>imię</th>
-                <th>nazwisko</th>
-                <th>PESEL</th>
-                <th>opcje</th>
-            </tr>
-        </thead>
-        <tbody>
-        {foreach $people as $p}
-        {strip}
-            <tr>
-                <td>{$p["imie"]}</td>
-                <td>{$p["nazwisko"]}</td>
-                <td>{$p["pesel"]}</td>
-                <td>
-                    <a class="button-small pure-button button-secondary" href="{$conf->action_url}personEdit/{$p['idklient']}">Edytuj</a>
+	<p:panel header="Search" toggleable="true" collapsed="true" style="margin: 1em;">
+		<h:form>
+			<h:panelGrid columns="2" cellpadding="4">
+				<h:outputLabel value="Last name:" />
+				<p:inputText value="#{personListBB.surname}" />
+				<p:commandButton value="Search" update="form-table" />
+			</h:panelGrid>
+		</h:form>
+	</p:panel>
 
-                    <a class="button-small pure-button button-warning" href="{$conf->action_url}personDelete/{$p['idklient']}">Usuń</a>
-                </td>
-            </tr>
-        {/strip}
-        {/foreach}
-        </tbody>
-        </table>
+	<p:messages />
 
-    
+	<h:form id="form-table" style="margin-bottom:1em; background:none; margin: 1em; padding: 4px;">
 
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script type="nomodule" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-</body>
+		<p:commandButton value="Add new person"
+			action="#{personListBB.newPerson()}" style="margin-bottom:1em;" />
+
+		<p:dataTable value="#{personListBB.list}" var="p">
+
+			<p:column priority="5">
+				<f:facet name="header">
+					<h:outputText value="Rent ID" />
+				</f:facet>
+				<h:outputText value="#{p.name}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Start date" />
+				</f:facet>
+				<h:outputText value="#{p.birthdate}">
+					<f:convertDateTime pattern="dd-MM-yyyy" />
+				</h:outputText>
+			</p:column>
+			
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="End date" />
+				</f:facet>
+				<h:outputText value="#{p.birthdate}">
+					<f:convertDateTime pattern="dd-MM-yyyy" />
+				</h:outputText>
+			</p:column>
+			
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Amount" />
+				</f:facet>
+				<h:outputText value="#{p.surname}" />
+			</p:column>
+
+			<p:column priority="4">
+				<f:facet name="header">
+					<h:outputText value="Client ID" />
+				</f:facet>
+			</p:column>
+			
+			<p:column priority="4">
+				<f:facet name="header">
+					<h:outputText value="Car ID" />
+				</f:facet>
+			</p:column>
+
+			<p:column priority="4">
+				<f:facet name="header">
+					<h:outputText value="Employee ID" />
+				</f:facet>
+			</p:column>
+
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Options" />
+				</f:facet>
+
+				<p:commandButton value="Edit" style="width: 100%; margin: 2px"
+					action="#{personListBB.editPerson(p)}" />
+					
+				<p:commandButton value="Delete" style="margin: 2px; width: 100%"
+					action="#{personListBB.deletePerson(p)}" update="@form" />
+					
+				<p:button outcome="rentEditGET" value="Edit (GET)" style="width:100%; margin: 2px">
+					<f:param name="p" value="#{p.idperson}" />
+					
+				</p:button>
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+
+</h:body>
 </html>
