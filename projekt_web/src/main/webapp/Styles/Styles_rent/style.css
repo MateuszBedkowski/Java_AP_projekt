@@ -9,6 +9,7 @@
 
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -27,21 +28,54 @@ header {
     justify-content: space-between;
     align-items: center;
     z-index: 99;
+    margin:0;
+    padding:0;
+    height: 70px;
+    background-color: rgba(0,0,0,0.7);
+    border: none;
 }
 
-.rent {
-    font-size: 2em;
+
+div.header{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+	border: none;
+	background-color: transparent;
+}
+
+li>a{
+text-align: center;
+}
+
+div.header ul{
+	display: flex;
+}
+
+h2.rent {
+    font-size:2em;
     color: #f00;
     user-select: none;
+    margin-right: 30px;
+    margin-left: 30px;
 }
 
-.navigation a {
+nav.navigation{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+
+.navigation a{
+	display:flex;
     position: relative;
     font-size: 1.1em;
-    color: #f00;
+    color: #F00;
     text-decoration: none;
     font-weight: 500;
-    margin-left: 40px;
+    margin:0 40px;
+    text-align: center;
 }
 
 .navigation a::after {
@@ -73,6 +107,7 @@ header {
     color: #fff;
     font-weight: 500;
     margin-left: 40px;
+    margin-right: 40px;
     transition: .5s;
 }
 
@@ -87,6 +122,7 @@ header {
     align-items: flex-start;
     flex-wrap: wrap;
     margin-top: 20px;
+    
 }
 
 .car-item {
@@ -97,24 +133,35 @@ header {
     align-items: center;
 }
 
-.rent-button {
+.car-item>img{
+	width: 230px;
+	border-radius: 5px 5px 0 0 ;
+}
+
+button.rent-button {
     width: 100%;
-    height: 30px;
-    background: #f00;
-    color: #fff;
+    height: 50px;
+    background: #90caf9;
+    color: #000;
     border: none;
     outline: none;
-    border-radius: 5px;
+    border-radius: 0 0 5px 5px;
     cursor: pointer;
     margin-top: auto;
     margin-bottom: 10px;
     font-size: 1em;
     font-weight: 500;
     transition: background .3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
 }
 
-.rent-button:hover {
-    background: #c00;
+button.rent-button:hover {
+    background-color: #c00;
+    color: #FFF;
+    
 }
 
 
@@ -135,4 +182,11 @@ header {
     font-size: 1em;
     font-weight: 500;
     transition: background .3s;
+}
+
+.content-container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+    align-items: center;
 }

@@ -13,15 +13,18 @@
 </h:head>
 <h:body>
     <header>
-    <div class="navigation">
-        <p:menu styleClass="navigation">
-            <p:menuitem value="Home" outcome="login" />
-            <p:menuitem value="Rent" outcome="rent" />
-            <p:menuitem value="Contact" outcome="contact" />
-            <p:button value="Login" outcome="login" styleClass="btnLogin-popup"/>
-        </p:menu>
-    </div>
-    </header>
+	        <h2 class="rent">Rental</h2>
+	        <nav class="navigation">
+	            <p:menu styleClass="header">
+	                <p:menuitem value="Home" outcome="login" />
+	                <p:menuitem value="Rent" outcome="rent" />
+	                <p:menuitem value="Contact" outcome="contact" />
+	                <p:button value="Login" outcome="login" styleClass="btnLogin-popup" />
+            	</p:menu>
+	            <button class="btnLogin-popup">Login</button>
+	
+	        </nav>
+	    </header>
 
     <div class="content-container">
         <p:button value="Rent list" outcome="rentList" styleClass="list-button"/>

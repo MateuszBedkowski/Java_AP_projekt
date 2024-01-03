@@ -27,21 +27,54 @@ header {
     justify-content: space-between;
     align-items: center;
     z-index: 99;
+    margin:0;
+    padding:0;
+    height: 70px;
+    background-color: rgba(0,0,0,0.7);
+    border: none;
 }
 
-.rent {
-    font-size: 2em;
+
+div.header{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+	border: none;
+	background-color: transparent;
+}
+
+li>a{
+text-align: center;
+}
+
+div.header ul{
+	display: flex;
+}
+
+h2.rent {
+    font-size:2em;
     color: #f00;
     user-select: none;
+    margin-right: 30px;
+    margin-left: 30px;
 }
 
-.navigation a {
+nav.navigation{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+
+.navigation a{
+	display:flex;
     position: relative;
     font-size: 1.1em;
-    color: #f00;
+    color: #F00;
     text-decoration: none;
     font-weight: 500;
-    margin-left: 40px;
+    margin:0 40px;
+    text-align: center;
 }
 
 .navigation a::after {
@@ -73,6 +106,7 @@ header {
     color: #fff;
     font-weight: 500;
     margin-left: 40px;
+    margin-right: 40px;
     transition: .5s;
 }
 
