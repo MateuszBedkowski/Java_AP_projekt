@@ -1,46 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<h:head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact</title>
-    <link rel="stylesheet" href="Styles/Styles_contact/style.css"/>
-</head>
+    <link rel="stylesheet" href="Styles/Styles_contact/style.css" />
+</h:head>
 
-<body>
+<h:body>
     <header>
         <h2 class="rent">Rental</h2>
         <nav class="navigation">
-            <a href="login.xhtml">Home</a>
-            <a href="rent.xhtml">Rent</a>
-            <a href="contact.xhtml">Contact</a>
-            <button class="btnLogin-popup">Login</button>
+            <p:menu styleClass="header">
+                <p:menuitem value="Home" outcome="login.xhtml" />
+                <p:menuitem value="Rent" outcome="rent.xhtml" />
+                <p:menuitem value="Contact" outcome="contact.xhtml" />
+                <p:button value="Login" outcome="login.xhtml" styleClass="btnLogin-popup" />
+            </p:menu>
         </nav>
     </header>
 
     <div class="wrapper">
         <div class="form-box login">
             <h2>Contact</h2>
-            <form action="mailto:bedkowskim@outlook.com" method="POST" enctype="text/plain">
+            <h:form>
                 <div class="input-box">
                     <span class="icon"><ion-icon name="person"></ion-icon></span>
-                    <input type="text" name="email" required="true">
-                    	<label>Email</label>
-                    </input>
+                    <p:inputText id="email" value="#{contactBean.email}" required="true" />
+                    <p:message for="email" />
+
+                    <label>Email</label>
                 </div>
                 <div class="input-box">
                     <span class="icon"><ion-icon name="document"></ion-icon></span>
-                    <input type="text" name="subject" required="true"/>
+                    <p:inputText id="subject" value="#{contactBean.subject}" required="true" />
+                    <p:message for="subject" />
+
                     <label>Subject</label>
                 </div>
                 <div class="input-box">
                     <span class="icon"><ion-icon name="chatbox"></ion-icon></span>
-                    <textarea name="message" required="true"></textarea>
+                    <p:inputTextarea id="message" value="#{contactBean.message}" required="true" />
+                    <p:message for="message" />
+
                     <label>Message</label>
                 </div>
-                <button type="submit" class="btn-send">Send</button>
-            </form>
+                <p:commandButton value="Send" action="#" styleClass="btn-send" />
+            </h:form>
         </div>
     </div>
 
@@ -49,6 +61,6 @@
         src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script type="nomodule"
         src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-</body>
+</h:body>
 
 </html>

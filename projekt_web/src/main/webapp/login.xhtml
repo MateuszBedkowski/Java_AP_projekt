@@ -5,20 +5,23 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
-<head>
+<h:head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Home</title>
     <link rel="stylesheet" href="Styles/Styles_login/style.css"/>
-</head>
-<body>
+</h:head>
+<h:body>
     
 	    <header>
 	        <h2 class="rent">Rental</h2>
 	        <nav class="navigation">
-	            <a href="login.xhtml">Home</a>
-	            <a href="rent.xhtml">Rent</a>
-	            <a href="contact.xhtml">Contact</a>
+	            <p:menu styleClass="header">
+	                <p:menuitem value="Home" outcome="login.xhtml" />
+	                <p:menuitem value="Rent" outcome="rent.xhtml" />
+	                <p:menuitem value="Contact" outcome="contact.xhtml" />
+	                <p:button value="Login" outcome="login.xhtml" styleClass="btnLogin-popup" />
+            	</p:menu>
 	            <button class="btnLogin-popup">Login</button>
 	
 	        </nav>
@@ -51,5 +54,5 @@
     <script src="Styles/Styles_login/script.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script type="nomodule" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-</body>
+</h:body>
 </html>

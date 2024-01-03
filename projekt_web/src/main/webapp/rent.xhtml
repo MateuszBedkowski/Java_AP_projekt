@@ -1,53 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <meta charset="utf-8" />
     <title>Rent</title>
     <link rel="stylesheet" href="Styles/Styles_rent/style.css"/>
-</head>
-<body>
+</h:head>
+<h:body>
     <header>
-        <h2 class="rent">Rental</h2>
-        <nav class="navigation">
-            <a href="login.xhtml">Home</a>
-            <a href="rent.xhtml">Rent</a>
-            <a href="contact.xhtml">Contact</a>
-            <button class="btnLogin-popup">Login</button>
-        </nav>
+    <div class="navigation">
+        <p:menu styleClass="navigation">
+            <p:menuitem value="Home" outcome="login" />
+            <p:menuitem value="Rent" outcome="rent" />
+            <p:menuitem value="Contact" outcome="contact" />
+            <p:button value="Login" outcome="login" styleClass="btnLogin-popup"/>
+        </p:menu>
+    </div>
     </header>
 
-    <button onclick="location.href='rentList.xhtml'" class="list-button" type="button">Rent list</button>
+    <div class="content-container">
+        <p:button value="Rent list" outcome="rentList" styleClass="list-button"/>
 
-
-    <div class="car-list">
-        <div class="car-item">
-            <img src="Styles/Styles_rent/zdj/Audi_S3.jpg" alt="Audi S3"/>
-            <button class="rent-button">Rent</button>
-        </div>
-        <div class="car-item">
-            <img src="Styles/Styles_rent/zdj/BMW_F30.jpg" alt="BMW F30"/>
-            <button class="rent-button">Rent</button>
-        </div>
-        <div class="car-item">
-            <img src="Styles/Styles_rent/zdj/BMW_F36.jpg" alt="BMW F36"/>
-            <button class="rent-button">Rent</button>
-        </div>
-        <div class="car-item">
-            <img src="Styles/Styles_rent/zdj/Chevrolet_Trax.jpg" alt="Chevrolet Trax"/>
-            <button class="rent-button">Rent</button>
-        </div>
-        <div class="car-item">
-            <img src="Styles/Styles_rent/zdj/Mercedes_A45s.jpg" alt="Mercedes AMG A45s"/>
-            <button class="rent-button">Rent</button>
-        </div>
-        <div class="car-item">
-            <img src="Styles/Styles_rent/zdj/Porsche_Macan.jpg" alt="Porsche Macan"/>
-            <button class="rent-button">Rent</button>
-        </div>
+		<h:form>
+	        <div class="car-list">
+	            <div class="car-item">
+	                <img src="Styles/Styles_rent/zdj/Audi_S3.jpg" alt="Audi S3"/>
+	                <p:commandButton value="Rent" styleClass="rent-button"/>
+	            </div>
+	            <div class="car-item">
+	                <img src="Styles/Styles_rent/zdj/BMW_F30.jpg" alt="BMW F30"/>
+	                <p:commandButton value="Rent" styleClass="rent-button"/>
+	            </div>
+	            <div class="car-item">
+	                <img src="Styles/Styles_rent/zdj/BMW_F36.jpg" alt="BMW F36"/>
+	                <p:commandButton value="Rent" styleClass="rent-button"/>
+	            </div>
+	            <div class="car-item">
+	                <img src="Styles/Styles_rent/zdj/Chevrolet_Trax.jpg" alt="Chevrolet Trax"/>
+	                <p:commandButton value="Rent" styleClass="rent-button"/>
+	            </div>
+	            <div class="car-item">
+	                <img src="Styles/Styles_rent/zdj/Mercedes_A45s.jpg" alt="Mercedes AMG A45s"/>
+	                <p:commandButton value="Rent" styleClass="rent-button"/>
+	            </div>
+	            <div class="car-item">
+	                <img src="Styles/Styles_rent/zdj/Porsche_Macan.jpg" alt="Porsche Macan"/>
+	                <p:commandButton value="Rent" styleClass="rent-button"/>
+	            </div>
+	        </div>
+        </h:form>
     </div>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script type="nomodule" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-</body>
+</h:body>
 </html>

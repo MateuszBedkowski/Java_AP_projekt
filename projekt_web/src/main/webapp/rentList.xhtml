@@ -13,6 +13,7 @@
 </h:head>
 <h:body style="margin-left: 0.5em; margin-right: 0.5em;">
 
+	<div>
 	<p:panel header="Search" toggleable="true" collapsed="true" style="margin: 1em;">
 		<h:form>
 			<h:panelGrid columns="2" cellpadding="4">
@@ -22,11 +23,13 @@
 			</h:panelGrid>
 		</h:form>
 	</p:panel>
-
+	</div>
 	<p:messages />
 
 	<h:form id="form-table" style="margin-bottom:1em; background:none; margin: 1em; padding: 4px;">
 
+		<p:button value="Return" outcome="rent" style="margin-bottom: 1em; margin-right: 1em;"/>
+		
 		<p:commandButton value="Add new person"
 			action="#{personListBB.newPerson()}" style="margin-bottom:1em;" />
 
