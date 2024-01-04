@@ -10,78 +10,65 @@ import jakarta.faces.context.Flash;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.servlet.http.HttpSession;
 
-import com.jsf.dao.PersonDAO;
-import com.jsf.entities.Person;
+import com.jsf.dao.WypozyczenieDAO;
+import com.jsf.entities.Wypozyczenie;
 
 @Named
 @ViewScoped
 public class PersonEditBB implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	private static final String PAGE_RENT_LIST = "rentList?faces-redirect=true";
-	private static final String PAGE_STAY_AT_THE_SAME = null;
+    private static final String PAGE_RENT_LIST = "rentList?faces-redirect=true";
+    private static final String PAGE_STAY_AT_THE_SAME = null;
 
-	private Person person = new Person();
-	private Person loaded = null;
+    private Wypozyczenie wypozyczenie = new Wypozyczenie();
+    private Wypozyczenie loaded = null;
 
-	@EJB
-	PersonDAO personDAO;
+    @EJB
+    WypozyczenieDAO wypozyczenieDAO;
 
-	@Inject
-	FacesContext context;
+    @Inject
+    FacesContext context;
 
-	@Inject
-	Flash flash;
+    @Inject
+    Flash flash;
 
-	public Person getPerson() {
-		return person;
-	}
+    public Wypozyczenie getWypozyczenie() {
+        return wypozyczenie;
+    }
 
-	public void onLoad() throws IOException {
-		// 1. load person passed through session
-		// HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
-		// loaded = (Person) session.getAttribute("person");
+    public void onLoad() throws IOException {
+        loaded = (Wypozyczenie) flash.get("wypozyczenie");
 
-		// 2. load person passed through flash
-		loaded = (Person) flash.get("person");
+        if (loaded != null) {
+            wypozyczenie = loaded;
+        } else {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Błędne użycie systemu", null));
+        }
+    }
 
-		// cleaning: attribute received => delete it from session
-		if (loaded != null) {
-			person = loaded;
-			// session.removeAttribute("person");
-		} else {
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Błędne użycie systemu", null));
-			// if (!context.isPostback()) { //possible redirect
-			// context.getExternalContext().redirect("personList.xhtml");
-			// context.responseComplete();
-			// }
-		}
+    public String saveData() {
+        // no Wypozyczenie object passed
+        if (loaded == null) {
+            return PAGE_STAY_AT_THE_SAME;
+        }
 
-	}
+        try {
+        	if (wypozyczenie.getIdwypozyczenie() == 0) {
+                // new record
+                wypozyczenieDAO.create(wypozyczenie);
+            } else {
+                // existing record
+                wypozyczenieDAO.merge(wypozyczenie);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            context.addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "wystąpił błąd podczas zapisu", null));
+            return PAGE_STAY_AT_THE_SAME;
+        }
 
-	public String saveData() {
-		// no Person object passed
-		if (loaded == null) {
-			return PAGE_STAY_AT_THE_SAME;
-		}
-
-		try {
-			if (person.getIdperson() == null) {
-				// new record
-				personDAO.create(person);
-			} else {
-				// existing record
-				personDAO.merge(person);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			context.addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "wystąpił błąd podczas zapisu", null));
-			return PAGE_STAY_AT_THE_SAME;
-		}
-
-		return PAGE_RENT_LIST;
-	}
+        return PAGE_RENT_LIST;
+    }
 }

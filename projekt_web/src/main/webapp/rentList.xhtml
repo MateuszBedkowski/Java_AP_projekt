@@ -17,8 +17,8 @@
 	<p:panel header="Search" toggleable="true" collapsed="true" style="margin: 1em;">
 		<h:form>
 			<h:panelGrid columns="2" cellpadding="4">
-				<h:outputLabel value="Last name:" />
-				<p:inputText value="#{personListBB.surname}" />
+				<h:outputLabel value="Amount:" />
+				<p:inputText value="#{personListBB.amount}" />
 				<p:commandButton value="Search" update="form-table" />
 			</h:panelGrid>
 		</h:form>
@@ -30,61 +30,63 @@
 
 		<p:button value="Return" outcome="rent" style="margin-bottom: 1em; margin-right: 1em;"/>
 		
-		<p:commandButton value="Add new person"
+		<p:commandButton value="Add new rent"
 			action="#{personListBB.newPerson()}" style="margin-bottom:1em;" />
 
-		<p:dataTable value="#{personListBB.list}" var="p">
+		<p:dataTable value="#{personListBB.list}" var="wypozyczenie">
 
-			<p:column priority="5">
+			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Rent ID" />
 				</f:facet>
-				<h:outputText value="#{p.name}" />
+				<h:outputText value="#{wypozyczenie.idwypozyczenie}" />
 			</p:column>
 
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Start date" />
 				</f:facet>
-				<h:outputText value="#{p.birthdate}">
+				<h:outputText value="#{wypozyczenie.poczatek}">
 					<f:convertDateTime pattern="dd-MM-yyyy" />
 				</h:outputText>
 			</p:column>
-			
+
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="End date" />
 				</f:facet>
-				<h:outputText value="#{p.birthdate}">
+				<h:outputText value="#{wypozyczenie.koniec}">
 					<f:convertDateTime pattern="dd-MM-yyyy" />
 				</h:outputText>
 			</p:column>
-			
+
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Amount" />
 				</f:facet>
-				<h:outputText value="#{p.surname}" />
+				<h:outputText value="#{wypozyczenie.kwota}" />
 			</p:column>
 
-			<p:column priority="4">
+			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Client ID" />
 				</f:facet>
+				<h:outputText value="#{wypozyczenie.klienci.idklient}" />
 			</p:column>
-			
-			<p:column priority="4">
+
+			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Car ID" />
 				</f:facet>
+				<h:outputText value="#{wypozyczenie.samochody.idsamochod}" />
 			</p:column>
 
-			<p:column priority="4">
+			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Employee ID" />
 				</f:facet>
+				<h:outputText value="#{wypozyczenie.pracownicy.idpracownik}" />
 			</p:column>
-
 
 			<p:column>
 				<f:facet name="header">
@@ -92,15 +94,10 @@
 				</f:facet>
 
 				<p:commandButton value="Edit" style="width: 100%; margin: 2px"
-					action="#{personListBB.editPerson(p)}" />
-					
+					action="#{personListBB.editPerson(wypozyczenie)}" />
+
 				<p:commandButton value="Delete" style="margin: 2px; width: 100%"
-					action="#{personListBB.deletePerson(p)}" update="@form" />
-					
-				<p:button outcome="rentEditGET" value="Edit (GET)" style="width:100%; margin: 2px">
-					<f:param name="p" value="#{p.idperson}" />
-					
-				</p:button>
+					action="#{personListBB.deletePerson(wypozyczenie)}" update="@form" />
 			</p:column>
 
 		</p:dataTable>

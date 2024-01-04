@@ -11,82 +11,73 @@ import jakarta.ejb.EJB;
 import jakarta.faces.context.ExternalContext;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.context.Flash;
-import jakarta.servlet.http.HttpSession;
 
-import com.jsf.dao.PersonDAO;
-import com.jsf.entities.Person;
+import com.jsf.dao.WypozyczenieDAO;
+import com.jsf.entities.Wypozyczenie;
 
 @Named
 @RequestScoped
 public class PersonListBB {
-	private static final String PAGE_RENT_EDIT = "rentEdit?faces-redirect=true";
-	private static final String PAGE_STAY_AT_THE_SAME = null;
+    private static final String PAGE_RENT_EDIT = "rentEdit?faces-redirect=true";
+    private static final String PAGE_STAY_AT_THE_SAME = null;
 
-	private String surname;
-		
-	@Inject
-	ExternalContext extcontext;
-	
-	@Inject
-	Flash flash;
-	
-	@EJB
-	PersonDAO personDAO;
-		
-	public String getSurname() {
-		return surname;
-	}
+    private String amount;
 
-	public void setSurname(String surname) {
-		this.surname = surname;
-	}
+    @Inject
+    ExternalContext extcontext;
 
-	public List<Person> getFullList(){
-		return personDAO.getFullList();
-	}
+    @Inject
+    Flash flash;
 
-	public List<Person> getList(){
-		List<Person> list = null;
-		
-		//1. Prepare search params
-		Map<String,Object> searchParams = new HashMap<String, Object>();
-		
-		if (surname != null && surname.length() > 0){
-			searchParams.put("surname", surname);
-		}
-		
-		//2. Get list
-		list = personDAO.getList(searchParams);
-		
-		return list;
-	}
+    @EJB
+    WypozyczenieDAO wypozyczenieDAO;
 
-	public String newPerson(){
-		Person person = new Person();
-		
-		//1. Pass object through session
-		//HttpSession session = (HttpSession) extcontext.getSession(true);
-		//session.setAttribute("person", person);
-		
-		//2. Pass object through flash	
-		flash.put("person", person);
-		
-		return PAGE_RENT_EDIT;
-	}
+    public String getAmount() {
+        return amount;
+    }
 
-	public String editPerson(Person person){
-		//1. Pass object through session
-		//HttpSession session = (HttpSession) extcontext.getSession(true);
-		//session.setAttribute("person", person);
-		
-		//2. Pass object through flash 
-		flash.put("person", person);
-		
-		return PAGE_RENT_EDIT;
-	}
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
 
-	public String deletePerson(Person person){
-		personDAO.remove(person);
-		return PAGE_STAY_AT_THE_SAME;
-	}
+    public List<Wypozyczenie> getFullList() {
+        return wypozyczenieDAO.getFullList();
+    }
+
+    public List<Wypozyczenie> getList() {
+        List<Wypozyczenie> list = null;
+
+        // 1. Prepare search params
+        Map<String, Object> searchParams = new HashMap<String, Object>();
+
+        if (amount != null && amount.length() > 0) {
+            searchParams.put("amount", amount);
+        }
+
+        // 2. Get list
+        list = wypozyczenieDAO.getList(searchParams);
+
+        return list;
+    }
+
+    public String newPerson() {
+        Wypozyczenie wypozyczenie = new Wypozyczenie();
+
+        // 1. Pass object through flash
+        flash.put("wypozyczenie", wypozyczenie);
+
+        return PAGE_RENT_EDIT;
+    }
+
+    public String editPerson(Wypozyczenie wypozyczenie) {
+        // 1. Pass object through flash
+        flash.put("wypozyczenie", wypozyczenie);
+
+        return PAGE_RENT_EDIT;
+    }
+
+    public String deletePerson(Wypozyczenie wypozyczenie) {
+        wypozyczenieDAO.remove(wypozyczenie);
+        return PAGE_STAY_AT_THE_SAME;
+    }
 }
