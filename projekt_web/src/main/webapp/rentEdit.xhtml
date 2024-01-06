@@ -20,64 +20,64 @@
 
 	<p:panel toggleable="true" header="Rent Edit">
 
-		<h:form rendered="#{personEditBB.person != null}">
+		<h:form rendered="#{personEditBB.wypozyczenie != null}">
 			<h:panelGrid columns="3" cellpadding="5">
 
-				<h:outputLabel for="p-name" value="Rent ID" />
-				<p:inputText id="p-name" value="#{personEditBB.person.name}"
-					required="true" requiredMessage="Podaj imię"
-					validatorMessage="co najwyżej 40 znaków">
+				<h:outputLabel for="w-idwypozyczenie" value="Rent ID" />
+				<p:inputText id="w-idwypozyczenie" value="#{personEditBB.wypozyczenie.idwypozyczenie}"
+					required="true" requiredMessage="Provide rent ID"
+					validatorMessage="max 40 characters">
 					<f:validateLength maximum="40" />
 				</p:inputText>
-				<p:message for="p-name" display="icon"/>
+				<p:message for="w-idwypozyczenie" display="icon"/>
 
-				<h:outputLabel for="p-date" value="Start date" />
-				<p:inputText id="p-date" value="#{personEditBB.person.birthdate}"
-					required="true" requiredMessage="podaj datę urodzenia"
-					converterMessage="niepoprawny format daty (np. 15-07-2018)">
+				<h:outputLabel for="w-poczatek" value="Start date" />
+				<p:inputText id="w-poczatek" value="#{personEditBB.wypozyczenie.poczatek}"
+					required="true" requiredMessage="Provide start date"
+					converterMessage="improper format (eg. 15-07-2018)">
 					<f:convertDateTime pattern="dd-MM-yyyy"/>
 			    </p:inputText>
-				<p:message for="p-date" display="icon"/>
+				<p:message for="w-poczatek" display="icon"/>
 
-				<!--<h:outputLabel for="p-date" value="End date" />
-				<p:inputText id="p-date" value="#{personEditBB.person.birthdate}"
-					required="true" requiredMessage="podaj datę urodzenia"
-					converterMessage="niepoprawny format daty (np. 15-07-2018)">
+				<h:outputLabel for="w-koniec" value="End date" />
+				<p:inputText id="w-koniec" value="#{personEditBB.wypozyczenie.koniec}"
+					required="true" requiredMessage="Provide end date"
+					converterMessage="improper format (eg. 15-07-2018)">
 					<f:convertDateTime pattern="dd-MM-yyyy"/>
 			    </p:inputText>
-				<p:message for="p-date" display="icon"/>
-								
-				<h:outputLabel for="p-name" value="Amount" />
-				<p:inputText id="p-name" value="#{personEditBB.person.name}"
-					required="true" requiredMessage="Podaj imię"
-					validatorMessage="co najwyżej 40 znaków">
-					<f:validateLength maximum="40" />
-				</p:inputText>
-				<p:message for="p-name" display="icon"/>
+				<p:message for="w-koniec" display="icon"/>
 				
-				<h:outputLabel for="p-name" value="Client ID" />
-				<p:inputText id="p-name" value="#{personEditBB.person.name}"
-					required="true" requiredMessage="Podaj imię"
-					validatorMessage="co najwyżej 40 znaków">
-					<f:validateLength maximum="40" />
+				<h:outputLabel for="w-kwota" value="Amount" />
+				<p:inputText id="w-kwota" value="#{personEditBB.wypozyczenie.kwota}"
+					required="true" requiredMessage="Provide amount"
+					validatorMessage="max is 9999">
+					<f:validateLength maximum="5" />
 				</p:inputText>
-				<p:message for="p-name" display="icon"/>
+				<p:message for="w-kwota" display="icon"/>
 				
-				<h:outputLabel for="p-name" value="Car ID" />
-				<p:inputText id="p-name" value="#{personEditBB.person.name}"
-					required="true" requiredMessage="Podaj imię"
-					validatorMessage="co najwyżej 40 znaków">
-					<f:validateLength maximum="40" />
+				<h:outputLabel for="w-klienci" value="Client ID" />
+				<p:inputText id="w-klienci" value="#{personEditBB.wypozyczenie.klienci.idklient}"
+					required="true" requiredMessage="Provide client ID"
+					validatorMessage="max is 9999">
+					<f:validateLength maximum="5" />
 				</p:inputText>
-				<p:message for="p-name" display="icon"/>
+				<p:message for="w-klienci" display="icon"/>
 				
-				<h:outputLabel for="p-name" value="Employee ID" />
-				<p:inputText id="p-name" value="#{personEditBB.person.name}"
-					required="true" requiredMessage="Podaj imię"
-					validatorMessage="co najwyżej 40 znaków">
-					<f:validateLength maximum="40" />
+				<h:outputLabel for="w-samochody" value="Car ID" />
+				<p:inputText id="w-samochody" value="#{personEditBB.wypozyczenie.samochody.idsamochod}"
+					required="true" requiredMessage="Provide car ID"
+					validatorMessage="max is 9999">
+					<f:validateLength maximum="5" />
 				</p:inputText>
-				<p:message for="p-name" display="icon"/>-->
+				<p:message for="w-samochody" display="icon"/>
+				
+				<h:outputLabel for="w-pracownicy" value="Employee ID" />
+				<p:inputText id="w-pracownicy" value="#{personEditBB.wypozyczenie.pracownicy.idpracownik}"
+					required="true" requiredMessage="Provide employee ID"
+					validatorMessage="max is 9999">
+					<f:validateLength maximum="5" />
+				</p:inputText>
+				<p:message for="w-pracownicy" display="icon"/>
 				
 			</h:panelGrid>
 

@@ -60,12 +60,12 @@
 				</h:outputText>
 			</p:column>
 
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="Amount" />
-				</f:facet>
-				<h:outputText value="#{wypozyczenie.kwota}" />
-			</p:column>
+			 <p:column>
+        		<f:facet name="header">
+            		<h:outputText value="Amount" />
+        		</f:facet>
+        		<h:outputText value="#{wypozyczenie.kwota}" />
+    		</p:column>
 
 			<p:column>
 				<f:facet name="header">
@@ -98,6 +98,7 @@
 
 				<p:commandButton value="Delete" style="margin: 2px; width: 100%"
 					action="#{personListBB.deletePerson(wypozyczenie)}" update="@form" />
+					
 			</p:column>
 
 		</p:dataTable>

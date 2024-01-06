@@ -11,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -35,17 +36,17 @@ public class Wypozyczenie implements Serializable {
     private Date koniec;
 
     @Column(name = "kwota")
-    private Double kwota;
+    private Integer kwota;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "klienci_idklient", referencedColumnName = "idklient")
     private Klienci klienci;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "samochody_idsamochod", referencedColumnName = "idsamochod")
     private Samochody samochody;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "pracownicy_idpracownik", referencedColumnName = "idpracownik")
     private Pracownicy pracownicy;
 
@@ -75,11 +76,11 @@ public class Wypozyczenie implements Serializable {
         this.koniec = koniec;
     }
 
-    public Double getKwota() {
+    public Integer getKwota() {
         return kwota;
     }
 
-    public void setKwota(Double kwota) {
+    public void setKwota(Integer kwota) {
         this.kwota = kwota;
     }
 
