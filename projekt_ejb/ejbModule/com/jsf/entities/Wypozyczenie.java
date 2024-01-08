@@ -45,7 +45,7 @@ public class Wypozyczenie implements Serializable {
     @OneToOne
     @JoinColumn(name = "samochody_idsamochod", referencedColumnName = "idsamochod")
     private Samochody samochody;
-
+    
     @OneToOne
     @JoinColumn(name = "pracownicy_idpracownik", referencedColumnName = "idpracownik")
     private Pracownicy pracownicy;

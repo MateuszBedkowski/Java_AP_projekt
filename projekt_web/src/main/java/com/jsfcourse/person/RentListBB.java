@@ -13,15 +13,17 @@ import jakarta.faces.context.FacesContext;
 import jakarta.faces.context.Flash;
 
 import com.jsf.dao.WypozyczenieDAO;
+import com.jsf.entities.Samochody;
 import com.jsf.entities.Wypozyczenie;
 
 @Named
 @RequestScoped
-public class PersonListBB {
+public class RentListBB {
     private static final String PAGE_RENT_EDIT = "rentEdit?faces-redirect=true";
     private static final String PAGE_STAY_AT_THE_SAME = null;
 
     private String amount;
+    private String kwota;
 
     @Inject
     ExternalContext extcontext;
@@ -38,6 +40,14 @@ public class PersonListBB {
 
     public void setAmount(String amount) {
         this.amount = amount;
+    }
+    
+    public String getKwota() {
+    	return kwota;
+    }
+    
+    public void setKwota(String kwota) {
+    	this.kwota = kwota;
     }
 
     public List<Wypozyczenie> getFullList() {
@@ -59,8 +69,22 @@ public class PersonListBB {
 
         return list;
     }
+    
+    //Do poprawy
+    public List<Wypozyczenie> getAmountList(String kwota){
+    	List<Wypozyczenie> list = null;
+    	
+    	Map<String, Object> searchParams = new HashMap<String, Object>();
+    	
+    	if(kwota != null && kwota.length() > 0) {
+    		searchParams.put("kwota", amount);
+    	}
+    	
+    	
+    	return list;
+    }
 
-    public String newPerson() {
+    public String newRent() {
         Wypozyczenie wypozyczenie = new Wypozyczenie();
 
         // 1. Pass object through flash
@@ -68,15 +92,27 @@ public class PersonListBB {
 
         return PAGE_RENT_EDIT;
     }
+    
+    public String newRent(Samochody samochody, Integer kwota) {
+        Wypozyczenie wypozyczenie = new Wypozyczenie();
 
-    public String editPerson(Wypozyczenie wypozyczenie) {
+        wypozyczenie.setSamochody(samochody);
+        wypozyczenie.setKwota(kwota);
+        
         // 1. Pass object through flash
         flash.put("wypozyczenie", wypozyczenie);
 
         return PAGE_RENT_EDIT;
     }
 
-    public String deletePerson(Wypozyczenie wypozyczenie) {
+    public String editRent(Wypozyczenie wypozyczenie) {
+        // 1. Pass object through flash
+        flash.put("wypozyczenie", wypozyczenie);
+
+        return PAGE_RENT_EDIT;
+    }
+
+    public String deleteRent(Wypozyczenie wypozyczenie) {
         wypozyczenieDAO.remove(wypozyczenie);
         return PAGE_STAY_AT_THE_SAME;
     }

@@ -32,27 +32,27 @@
 	        <div class="car-list">
 	            <div class="car-item">
 	                <img src="Styles/Styles_rent/zdj/Audi_S3.jpg" alt="Audi S3"/>
-	                <p:commandButton value="Rent Audi S3" action="#{personEditBB.rentCar(1)}" styleClass="rent-button"/>
+	                <p:commandButton value="Rent Audi S3" action="#{rentListBB.newRent()}" styleClass="rent-button"/>
 	            </div>
 	            <div class="car-item">
 	                <img src="Styles/Styles_rent/zdj/BMW_F30.jpg" alt="BMW F30"/>
-	                <p:commandButton value="Rent BMW F30" action="#{personEditBB.rentCar(2)}"  styleClass="rent-button"/>
+	                <p:commandButton value="Rent BMW F30" action="#{rentListBB.newRent(2,1200)}"  styleClass="rent-button"/>
 	            </div>
 	            <div class="car-item">
 	                <img src="Styles/Styles_rent/zdj/BMW_F36.jpg" alt="BMW F36"/>
-	                <p:commandButton value="Rent BMW F36" action="#{personEditBB.rentCar(3)}"  styleClass="rent-button"/>
+	                <p:commandButton value="Rent BMW F36" action="#{rentListBB.newRent(3, 1400)}"  styleClass="rent-button"/>
 	            </div>
 	            <div class="car-item">
 	                <img src="Styles/Styles_rent/zdj/Chevrolet_Trax.jpg" alt="Chevrolet Trax"/>
-	                <p:commandButton value="Rent Chevrolet Trax" action="#{personEditBB.rentCar(4)}"  styleClass="rent-button"/>
+	                <p:commandButton value="Rent Chevrolet Trax" action="#{rentListBB.newRent(4, 600)}"  styleClass="rent-button"/>
 	            </div>
 	            <div class="car-item">
 	                <img src="Styles/Styles_rent/zdj/Mercedes_A45s.jpg" alt="Mercedes AMG A45s"/>
-	                <p:commandButton value="Rent Mercedes AMG A45s" action="#{personEditBB.rentCar(5)}"  styleClass="rent-button"/>
+	                <p:commandButton value="Rent Mercedes AMG A45s" action="#{rentListBB.newRent(5, 3200)}"  styleClass="rent-button"/>
 	            </div>
 	            <div class="car-item">
 	                <img src="Styles/Styles_rent/zdj/Porsche_Macan.jpg" alt="Porsche Macan"/>
-	                <p:commandButton value="Rent Porsche Macan" action="#{personEditBB.rentCar(6)}"  styleClass="rent-button"/>
+	                <p:commandButton value="Rent Porsche Macan" action="#{rentListBB.newRent(6, 4100)}"  styleClass="rent-button"/>
 	            </div>
 	        </div>
         </h:form>

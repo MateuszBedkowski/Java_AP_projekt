@@ -49,6 +49,28 @@ public class WypozyczenieDAO {
         String select = "SELECT w ";
         String from = "FROM Wypozyczenie w ";
         String where = "";
+        String orderby = "ORDER BY w.kwota ASC";
+
+        // Add conditions based on searchParams...
+
+        Query query = em.createQuery(select + from + where + orderby);
+
+        // Set parameters...
+
+        try {
+            list = query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+    
+    //Do poprawy!!!
+    public List<Wypozyczenie> getAmountList(Map<String, Object> searchParams) {
+        List<Wypozyczenie> list = null;
+        String select = "SELECT w ";
+        String from = "FROM Wypozyczenie w ";
+        String where = "WHERE kwota LIKE w.kwota ";
         String orderby = "ORDER BY w.poczatek ASC";
 
         // Add conditions based on searchParams...

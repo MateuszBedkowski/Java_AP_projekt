@@ -18,8 +18,8 @@
 		<h:form>
 			<h:panelGrid columns="2" cellpadding="4">
 				<h:outputLabel value="Amount:" />
-				<p:inputText value="#{personListBB.amount}" />
-				<p:commandButton value="Search" update="form-table" />
+				<p:inputText value="#{rentListBB.kwota}"/>
+				<p:commandButton value="Search" action="#{rentListBB.getAmountList(kwota)}" />
 			</h:panelGrid>
 		</h:form>
 	</p:panel>
@@ -30,10 +30,10 @@
 
 		<p:button value="Return" outcome="rent" style="margin-bottom: 1em; margin-right: 1em;"/>
 		
-		<p:commandButton value="Add new rent"
-			action="#{personListBB.newPerson()}" style="margin-bottom:1em;" />
+		<!-- <p:commandButton value="Add new rent"
+			action="#{rentListBB.newRent()}" style="margin-bottom:1em;" />-->
 
-		<p:dataTable value="#{personListBB.list}" var="wypozyczenie">
+		<p:dataTable value="#{rentListBB.list}" var="wypozyczenie">
 
 			<p:column>
 				<f:facet name="header">
@@ -94,10 +94,10 @@
 				</f:facet>
 
 				<p:commandButton value="Edit" style="width: 100%; margin: 2px"
-					action="#{personListBB.editPerson(wypozyczenie)}" />
+					action="#{rentListBB.editRent(wypozyczenie)}" />
 
 				<p:commandButton value="Delete" style="margin: 2px; width: 100%"
-					action="#{personListBB.deletePerson(wypozyczenie)}" update="@form" />
+					action="#{rentListBB.deleteRent(wypozyczenie)}" update="@form" />
 					
 			</p:column>
 

@@ -29,7 +29,15 @@ public class Samochody implements Serializable {
 
 	public Samochody() {
 	}
+	
+	public Samochody(Samochody samochody) {
+		getIdsamochod(samochody);
+	}
 
+	public int getIdsamochod(Samochody samochody) {
+		return samochody.idsamochod;
+	}
+	
 	public int getIdsamochod() {
 		return this.idsamochod;
 	}

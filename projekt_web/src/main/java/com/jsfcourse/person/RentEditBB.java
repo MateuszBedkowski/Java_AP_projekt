@@ -20,7 +20,7 @@ import com.jsf.entities.Wypozyczenie;
 
 @Named
 @ViewScoped
-public class PersonEditBB implements Serializable {
+public class RentEditBB implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private static final String PAGE_RENT_LIST = "rentList?faces-redirect=true";
@@ -38,6 +38,8 @@ public class PersonEditBB implements Serializable {
     @Inject
     Flash flash;
 
+	private FacesContext facesContext;
+
     public Wypozyczenie getWypozyczenie() {
         return wypozyczenie;
     }
@@ -52,18 +54,6 @@ public class PersonEditBB implements Serializable {
         }
     }
     
-    public void rentCar(Wypozyczenie samochody) {
-        FacesContext facesContext;
-		try {
-            Wypozyczenie wypozyczenie = new Wypozyczenie();
-            
-            
-            facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Rent created successfully!", null));
-        } catch (Exception e) {
-            facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error creating rent", null));
-        }
-
-
 
     public String saveData() {
         // no Wypozyczenie object passed
