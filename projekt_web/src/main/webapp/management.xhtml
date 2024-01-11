@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<meta charset="utf-8" />
+	<title>Management</title>
+	<link rel="stylesheet" href="Styles/Styles_rent/style.css"/>
+</h:head>
+<h:body style="margin-left: 0.5em; margin-right: 0.5em;">
+
+	<div>
+	<p:panel header="Search" toggleable="true" collapsed="true" style="margin: 1em;">
+		<h:form>
+			<h:panelGrid columns="2" cellpadding="4">
+				<h:outputLabel value="Amount:" />
+				<p:inputText value="#{rentListBB.kwota}"/>
+				<p:commandButton value="Search" action="#{rentListBB.getAmountList()}" />
+			</h:panelGrid>
+		</h:form>
+	</p:panel>
+	</div>
+	<p:messages />
+
+	<h:form id="form-table" style="margin-bottom:1em; background:none; margin: 1em; padding: 4px;">
+
+		<p:button value="Return" outcome="rent" style="margin-bottom: 1em; margin-right: 1em;"/>
+		
+		<!-- <p:commandButton value="Add new rent"
+			action="#{rentListBB.newRent()}" style="margin-bottom:1em;" />-->
+
+		<p:dataTable value="#{rentListBB.list}" var="wypozyczenie">
+		
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Car" />
+				</f:facet>
+				<h:outputText value="#{wypozyczenie.samochody.marka} #{wypozyczenie.samochody.model}" />
+			</p:column>
+			
+			<p:column>
+        		<f:facet name="header">
+            		<h:outputText value="Amount" />
+        		</f:facet>
+        		<h:outputText value="#{wypozyczenie.kwota}" />
+    		</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Start date" />
+				</f:facet>
+				<h:outputText value="#{wypozyczenie.poczatek}">
+					<f:convertDateTime pattern="dd-MM-yyyy" />
+				</h:outputText>
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="End date" />
+				</f:facet>
+				<h:outputText value="#{wypozyczenie.koniec}">
+					<f:convertDateTime pattern="dd-MM-yyyy" />
+				</h:outputText>
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Client" />
+				</f:facet>
+				<h:outputText value="#{wypozyczenie.klienci.nazwisko} #{wypozyczenie.klienci.imie}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Employee" />
+				</f:facet>
+				<h:outputText value="#{wypozyczenie.pracownicy.imie} #{wypozyczenie.pracownicy.nazwisko}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Options" />
+				</f:facet>
+
+				<p:commandButton value="Edit" style="width: 100%; margin: 2px"
+					action="#{rentListBB.editRent(wypozyczenie)}" />
+
+				<p:commandButton value="Delete" style="margin: 2px; width: 100%"
+					action="#{rentListBB.deleteRent(wypozyczenie)}" update="@form" />
+					
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+
+</h:body>
+</html>

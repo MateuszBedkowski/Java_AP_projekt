@@ -52,7 +52,6 @@
 				<h:outputLabel value="Client" />
 		            <p:selectOneListbox id="client" value="#{rentListBB.client}"
 				                                var="client" filter="true" filterMatchMode="contains" filterNormalize="true">
-		                
 		                <f:selectItems value="#{rentListBB.clientList()}" var="client" itemLabel="#{client.imie} #{client.nazwisko}" itemValue="#{client}"/>
 			                <p:column>
 			                    <h:outputText value="#{client.imie} #{client.nazwisko}"/>
