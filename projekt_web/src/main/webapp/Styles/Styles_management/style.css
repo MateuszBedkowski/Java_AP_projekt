@@ -8,12 +8,11 @@
 }
 
 body {
-	background: url(contact.jpg);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url('contact.jpg') no-repeat;
+    background: url('jdm.jpg') no-repeat;
     background-size: cover;
 }
 

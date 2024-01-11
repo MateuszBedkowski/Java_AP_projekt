@@ -11,4 +11,5 @@
     <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="com.jsf.entities.Samochody"/>
     <fullyQualifiedTypeName name="com.jsf.dao.SamochodyDAO"/>
+    <fullyQualifiedTypeName name="com.jsf.dao.KlienciDAO"/>
 </qualifiedTypeNameHistroy>
