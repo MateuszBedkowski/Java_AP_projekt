@@ -4,7 +4,7 @@ INDEX VERSION 1.134+/home/mateusz/Documents/Studia/Java_AP/projekt/.metadata/.pl
 770579386.index
 3641403219.index
 2798262741.index
-286675925.index
+3484866698.index
 759154999.index
 755658125.index
 2984327269.index
@@ -49,8 +49,8 @@ INDEX VERSION 1.134+/home/mateusz/Documents/Studia/Java_AP/projekt/.metadata/.pl
 636667696.index
 2658631742.index
 3698560409.index
-3584377550.index
 3743767837.index
+3584377550.index
 1979758325.index
 668455776.index
 2901563779.index
@@ -101,11 +101,11 @@ INDEX VERSION 1.134+/home/mateusz/Documents/Studia/Java_AP/projekt/.metadata/.pl
 2966949011.index
 3711492178.index
 588513822.index
+286675925.index
 1958779112.index
+3579054419.index
 221385892.index
-3863221103.index
-3484866698.index
 1443620936.index
 2269124146.index
-3579054419.index
+3863221103.index
 2622100826.index

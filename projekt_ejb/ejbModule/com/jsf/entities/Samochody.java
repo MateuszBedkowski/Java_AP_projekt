@@ -17,7 +17,7 @@ public class Samochody implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idsamochod;
+	private Integer idsamochod;
 
 	private String marka;
 
@@ -27,6 +27,8 @@ public class Samochody implements Serializable {
 
 	private String nadwozie;
 
+	private String image;
+	
 	public Samochody() {
 	}
 	
@@ -78,4 +80,12 @@ public class Samochody implements Serializable {
 		this.nadwozie = nadwozie;
 	}
 
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+	
 }

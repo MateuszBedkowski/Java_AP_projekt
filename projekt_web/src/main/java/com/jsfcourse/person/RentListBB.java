@@ -12,9 +12,12 @@ import jakarta.faces.context.ExternalContext;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.context.Flash;
 
+import com.jsf.dao.KlienciDAO;
+import com.jsf.dao.SamochodyDAO;
 import com.jsf.dao.WypozyczenieDAO;
 import com.jsf.entities.Samochody;
 import com.jsf.entities.Wypozyczenie;
+import com.jsf.entities.Klienci;
 
 @Named
 @RequestScoped
@@ -24,6 +27,7 @@ public class RentListBB {
 
     private String amount;
     private String kwota;
+    private String client;
 
     @Inject
     ExternalContext extcontext;
@@ -33,6 +37,12 @@ public class RentListBB {
 
     @EJB
     WypozyczenieDAO wypozyczenieDAO;
+    
+    @EJB
+    SamochodyDAO samochodyDAO;
+    
+    @EJB
+    KlienciDAO klienciDAO;
 
     public String getAmount() {
         return amount;
@@ -49,11 +59,27 @@ public class RentListBB {
     public void setKwota(String kwota) {
     	this.kwota = kwota;
     }
+    
+    public String getClient() {
+    	return client;
+    }
+    
+    public void setClient(String client) {
+    	this.client = client;
+    }
 
     public List<Wypozyczenie> getFullList() {
         return wypozyczenieDAO.getFullList();
     }
 
+    public List<Samochody> carList(){
+    	return samochodyDAO.getFullList();
+    }
+    
+    public List<Klienci> clientList(){
+    	return klienciDAO.getFullList();
+    }
+    
     public List<Wypozyczenie> getList() {
         List<Wypozyczenie> list = null;
 
@@ -71,7 +97,7 @@ public class RentListBB {
     }
     
     //Do poprawy
-    public List<Wypozyczenie> getAmountList(String kwota){
+    public List<Wypozyczenie> getAmountList(){
     	List<Wypozyczenie> list = null;
     	
     	Map<String, Object> searchParams = new HashMap<String, Object>();
@@ -93,11 +119,11 @@ public class RentListBB {
         return PAGE_RENT_EDIT;
     }
     
-    public String newRent(Samochody samochody, Integer kwota) {
+    public String newRent(Samochody samochody) {
         Wypozyczenie wypozyczenie = new Wypozyczenie();
 
         wypozyczenie.setSamochody(samochody);
-        wypozyczenie.setKwota(kwota);
+        //wypozyczenie.setKwota(kwota);
         
         // 1. Pass object through flash
         flash.put("wypozyczenie", wypozyczenie);

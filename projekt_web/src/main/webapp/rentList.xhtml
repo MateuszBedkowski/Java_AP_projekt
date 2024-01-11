@@ -19,7 +19,7 @@
 			<h:panelGrid columns="2" cellpadding="4">
 				<h:outputLabel value="Amount:" />
 				<p:inputText value="#{rentListBB.kwota}"/>
-				<p:commandButton value="Search" action="#{rentListBB.getAmountList(kwota)}" />
+				<p:commandButton value="Search" action="#{rentListBB.getAmountList()}" />
 			</h:panelGrid>
 		</h:form>
 	</p:panel>
@@ -34,13 +34,20 @@
 			action="#{rentListBB.newRent()}" style="margin-bottom:1em;" />-->
 
 		<p:dataTable value="#{rentListBB.list}" var="wypozyczenie">
-
+		
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="Rent ID" />
+					<h:outputText value="Car" />
 				</f:facet>
-				<h:outputText value="#{wypozyczenie.idwypozyczenie}" />
+				<h:outputText value="#{wypozyczenie.samochody.marka} #{wypozyczenie.samochody.model}" />
 			</p:column>
+			
+			<p:column>
+        		<f:facet name="header">
+            		<h:outputText value="Amount" />
+        		</f:facet>
+        		<h:outputText value="#{wypozyczenie.kwota}" />
+    		</p:column>
 
 			<p:column>
 				<f:facet name="header">
@@ -60,32 +67,18 @@
 				</h:outputText>
 			</p:column>
 
-			 <p:column>
-        		<f:facet name="header">
-            		<h:outputText value="Amount" />
-        		</f:facet>
-        		<h:outputText value="#{wypozyczenie.kwota}" />
-    		</p:column>
-
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="Client ID" />
+					<h:outputText value="Client" />
 				</f:facet>
-				<h:outputText value="#{wypozyczenie.klienci.idklient}" />
+				<h:outputText value="#{wypozyczenie.klienci.nazwisko} #{wypozyczenie.klienci.imie}" />
 			</p:column>
 
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="Car ID" />
+					<h:outputText value="Employee" />
 				</f:facet>
-				<h:outputText value="#{wypozyczenie.samochody.idsamochod}" />
-			</p:column>
-
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="Employee ID" />
-				</f:facet>
-				<h:outputText value="#{wypozyczenie.pracownicy.idpracownik}" />
+				<h:outputText value="#{wypozyczenie.pracownicy.imie} #{wypozyczenie.pracownicy.nazwisko}" />
 			</p:column>
 
 			<p:column>

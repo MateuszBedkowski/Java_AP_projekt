@@ -50,8 +50,7 @@ public class Wypozyczenie implements Serializable {
     @JoinColumn(name = "pracownicy_idpracownik", referencedColumnName = "idpracownik")
     private Pracownicy pracownicy;
 
-    // Constructors, getters, setters...
-
+    
     public Integer getIdwypozyczenie() {
         return idwypozyczenie;
     }
