@@ -10,6 +10,7 @@
     <fullyQualifiedTypeName name="jakarta.persistence.PersistenceContext"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="com.jsf.entities.Samochody"/>
-    <fullyQualifiedTypeName name="com.jsf.dao.SamochodyDAO"/>
+    <fullyQualifiedTypeName name="com.jsf.dao.PracownicyDAO"/>
     <fullyQualifiedTypeName name="com.jsf.dao.KlienciDAO"/>
+    <fullyQualifiedTypeName name="com.jsf.dao.SamochodyDAO"/>
 </qualifiedTypeNameHistroy>

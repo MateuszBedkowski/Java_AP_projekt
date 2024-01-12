@@ -16,6 +16,7 @@ body {
     background:url('Supra.png') no-repeat;
     background-size: cover;
     background-position: center;
+    margin: 30px;
 }
 
 header {

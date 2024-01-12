@@ -8,38 +8,38 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 
-import com.jsf.entities.Samochody;
+import com.jsf.entities.Pracownicy;
 import com.jsf.entities.Wypozyczenie;
 
 @Stateless
-public class SamochodyDAO {
+public class PracownicyDAO {
     private final static String UNIT_NAME = "jsfcourse-simplePU";
 
     @PersistenceContext(unitName = UNIT_NAME)
     protected EntityManager em;
 
-    public void create(Samochody car) {
-        em.persist(car);
+    public void create(Pracownicy employee) {
+        em.persist(employee);
     }
 
-    public Samochody merge(Samochody car) {
-        return em.merge(car);
+    public Pracownicy merge(Pracownicy employee) {
+        return em.merge(employee);
     }
 
-    public void remove(Samochody car) {
-        em.remove(em.merge(car));
+    public void remove(Pracownicy employee) {
+        em.remove(em.merge(employee));
     }
 
-    public Samochody find(Integer id) {
-        return em.find(Samochody.class, id);
+    public Pracownicy find(Integer id) {
+        return em.find(Pracownicy.class, id);
     }
     
-    public List<Samochody> getList(Map<String, Object> searchParams) {
-        List<Samochody> list = null;
-        String select = "SELECT s ";
-        String from = "FROM Samochody s ";
+    public List<Pracownicy> getList(Map<String, Object> searchParams) {
+        List<Pracownicy> list = null;
+        String select = "SELECT p ";
+        String from = "FROM Pracownicy p ";
         String where = "";
-        String orderby = "ORDER BY s.marka ASC";
+        String orderby = "ORDER BY p.nazwisko ASC";
 
         // Add conditions based on searchParams...
 
@@ -55,9 +55,9 @@ public class SamochodyDAO {
         return list;
     }
 
-    public List<Samochody> getFullList() {
-        List<Samochody> list = null;
-        Query query = em.createQuery("SELECT s FROM Samochody s");
+    public List<Pracownicy> getFullList() {
+        List<Pracownicy> list = null;
+        Query query = em.createQuery("SELECT p FROM Pracownicy p");
         try {
             list = query.getResultList();
         } catch (Exception e) {

@@ -7,7 +7,7 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <f:metadata>
-	<f:viewAction action="#{rentEditBB.onLoad()}" />
+	<f:viewAction action="#{rentEditBB.rentOnLoad()}" />
 </f:metadata>
 
 <h:head>
@@ -16,15 +16,15 @@
 	<link rel="stylesheet" href="Styles/Styles_rent/style.css" />
 </h:head>
 
-<h:body style="background-color: #eee; margin: 0.5em;">
+<h:body>
 
-	<p:panel toggleable="true" header="Rent Edit">
-			#{rentEditBB.wypozyczenie.samochody.marka} #{rentEditBB.wypozyczenie.samochody.model}
+	<p:panel toggleable="false" header="Rent">
+			Car #{rentEditBB.wypozyczenie.samochody.marka} #{rentEditBB.wypozyczenie.samochody.model}
 		<h:form rendered="#{rentEditBB.wypozyczenie != null}">
-		
+
 			<h:panelGrid columns="3" cellpadding="5">
-			
-			<h:outputLabel for="w-kwota" value="Amount" />
+
+				<h:outputLabel for="w-kwota" value="Amount" />
 				<p:inputText id="w-kwota" value="#{rentEditBB.wypozyczenie.kwota}"
 					required="true" requiredMessage="Provide amount"
 					validatorMessage="max is 9999">
@@ -50,13 +50,29 @@
 				<p:message for="w-koniec" display="icon" />
 
 				<h:outputLabel value="Client" />
-		            <p:selectOneListbox id="client" value="#{rentListBB.client}"
-				                                var="client" filter="true" filterMatchMode="contains" filterNormalize="true">
-		                <f:selectItems value="#{rentListBB.clientList()}" var="client" itemLabel="#{client.imie} #{client.nazwisko}" itemValue="#{client}"/>
-			                <p:column>
-			                    <h:outputText value="#{client.imie} #{client.nazwisko}"/>
-			                </p:column>
-		            </p:selectOneListbox>
+				<p:selectOneListbox id="client" value="#{rentListBB.client}"
+					var="client" filter="true" filterMatchMode="contains"
+					filterNormalize="true">
+					<f:selectItems value="#{rentListBB.clientList()}" var="client"
+						itemLabel="#{client.imie} #{client.nazwisko}"
+						itemValue="#{client}" />
+					<p:column>
+						<h:outputText value="#{client.imie} #{client.nazwisko}" />
+					</p:column>
+				</p:selectOneListbox>
+
+				<p />
+				<h:outputLabel value="Employee" />
+				<p:selectOneListbox id="employee" value="#{rentListBB.employee}"
+					var="employee" filter="true" filterMatchMode="contains"
+					filterNormalize="true">
+					<f:selectItems value="#{rentListBB.employeeList()}" var="employee"
+						itemLabel="#{employee.imie} #{employee.nazwisko}"
+						itemValue="#{employee}" />
+					<p:column>
+						<h:outputText value="#{employee.imie} #{employee.nazwisko}" />
+					</p:column>
+				</p:selectOneListbox>
 			</h:panelGrid>
 
 			<p:messages id="msgs" />
@@ -64,7 +80,7 @@
 			<p:commandButton value="Save" action="#{rentEditBB.saveData()}"
 				style="margin-right: 1em;" update="@form" />
 
-			<p:button value="Cancel" outcome="rentList" />
+			<p:button value="Cancel" outcome="rent" />
 		</h:form>
 
 	</p:panel>

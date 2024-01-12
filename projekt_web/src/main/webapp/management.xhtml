@@ -9,60 +9,150 @@
 <h:head>
 	<meta charset="utf-8" />
 	<title>Management</title>
-	<link rel="stylesheet" href="Styles/Styles_management/style.css"/>
+	<link rel="stylesheet" href="Styles/Styles_management/style.css" />
 </h:head>
 <h:body style="margin-left: 0.5em; margin-right: 0.5em;">
-	
+
 	<header>
-	        <h2 class="rent">Rental</h2>
-	        <nav class="navigation">
-	            <p:menu styleClass="header">
-	                <p:menuitem value="Home" outcome="login" />
-	                <p:menuitem value="Rent" outcome="rent" />
-	                <p:menuitem value="Contact" outcome="contact" />
-	                <p:menuitem value="Management" outcome="management" />
-            	</p:menu>
-	
-	        </nav>
-	    </header>
-	
-	
-	<div class="add-object" style="display: flex; grid-row: 1 / span 2; margin-left: 20 px; margin-right: 20px; column-gap: 20px;display: flex; justify-content: center; align-items: center;">
-		<div>
-		<p:panel header="Add employee"  style="margin: 1em;">
+		<h2 class="rent">Rental</h2>
+		<nav class="navigation">
+			<p:menu styleClass="header">
+				<p:menuitem value="Home" outcome="login" />
+				<p:menuitem value="Rent" outcome="rent" />
+				<p:menuitem value="Contact" outcome="contact" />
+				<p:menuitem value="Management" outcome="management" />
+			</p:menu>
+
+		</nav>
+	</header>
+
+
+	<div class="add-object"
+		style="display: flex; grid-row: 1/span 2; margin-left: 20 px; margin-right: 20px; column-gap: 20px; display: flex; justify-content: center; align-items: center; padding: 10px;">
+		<p:panel header="New Employee">
 			<h:form>
-				<h:panelGrid columns="2" cellpadding="4">
-					<h:outputLabel value="Name:" />
-					<p:inputText value="#{rentListBB.kwota}"/>
-					<p:commandButton value="Add" action="#{rentListBB.getAmountList()}" />
+
+				<h:panelGrid columns="3" cellpadding="5">
+
+					<h:outputLabel for="p-imie" value="Name" />
+					<p:inputText id="p-imie" value="#" required="true"
+						requiredMessage="Provide name" validatorMessage="Too long name">
+						<f:validateLength maximum="30" />
+					</p:inputText>
+					<p:message for="p-imie" display="icon" />
+
+					<h:outputLabel for="p-nazwisko" value="Last name" />
+					<p:inputText id="p-nazwisko" value="#" required="true"
+						requiredMessage="Provide last name"
+						validatorMessage="Too long last name">
+						<f:validateLength maximum="30" />
+					</p:inputText>
+					<p:message for="p-nazwisko" display="icon" />
+
+					<h:outputLabel for="p-stanowisko" value="Position" />
+					<p:inputText id="p-stanowisko" value="#" required="true"
+						requiredMessage="Provide position"
+						validatorMessage="Too long position name">
+						<f:validateLength maximum="30" />
+					</p:inputText>
+					<p:message for="p-stanowisko" display="icon" />
+
 				</h:panelGrid>
+
+
+				<p:commandButton value="Save"
+					action="#{rentEditBB.employeeSaveData()}"
+					style="margin-right: 1em;" update="@form" />
 			</h:form>
 		</p:panel>
-		</div>
-		
-		<div>
-		<p:panel header="Add client"  style="margin: 1em;">
+
+		<p:panel header="New Client">
 			<h:form>
-				<h:panelGrid columns="2" cellpadding="4">
-					<h:outputLabel value="Name:" />
-					<p:inputText value="#{rentListBB.kwota}"/>
-					<p:commandButton value="Add" action="#{rentListBB.getAmountList()}" />
+
+				<h:panelGrid columns="3" cellpadding="5">
+
+					<h:outputLabel for="k-imie" value="Name" />
+					<p:inputText id="k-imie" value="#" required="true"
+						requiredMessage="Provide name" validatorMessage="Too long name">
+						<f:validateLength maximum="30" />
+					</p:inputText>
+					<p:message for="k-imie" display="icon" />
+
+					<h:outputLabel for="k-nazwisko" value="Last name" />
+					<p:inputText id="k-nazwisko" value="#" required="true"
+						requiredMessage="Provide last name"
+						validatorMessage="Too long last name">
+						<f:validateLength maximum="30" />
+					</p:inputText>
+					<p:message for="k-nazwisko" display="icon" />
+
+					<h:outputLabel for="k-pesel" value="PESEL" />
+					<p:inputText id="k-pesel" value="#" required="true"
+						requiredMessage="Provide position"
+						validatorMessage="Too long position name">
+						<f:validateLength maximum="30" />
+					</p:inputText>
+					<p:message for="k-pesel" display="icon" />
+
+					<h:outputLabel for="k-telefon" value="Phone" />
+					<p:inputText id="k-telefon" value="#" required="true"
+						requiredMessage="Provide phone number"
+						validatorMessage="Too long phone number">
+						<f:validateLength maximum="12" />
+					</p:inputText>
+					<p:message for="k-telefon" display="icon" />
+
 				</h:panelGrid>
+
+				<p:commandButton value="Save"
+					action="#{rentEditBB.clientSaveData()}" style="margin-right: 1em;"
+					update="@form" />
 			</h:form>
 		</p:panel>
-		</div>
-	
-		<div>
-		<p:panel header="Add car"  style="margin: 1em;">
+
+
+		<p:panel header="New Car">
 			<h:form>
-				<h:panelGrid columns="2" cellpadding="4">
-					<h:outputLabel value="Brand:" />
-					<p:inputText value="#{rentListBB.kwota}"/>
-					<p:commandButton value="Add" action="#{rentListBB.getAmountList()}" />
+
+				<h:panelGrid columns="3" cellpadding="5">
+
+					<h:outputLabel for="s-marka" value="Brand" />
+					<p:inputText id="s-marka" value="#" required="true"
+						requiredMessage="Provide brand" validatorMessage="Too long name">
+						<f:validateLength maximum="25" />
+					</p:inputText>
+					<p:message for="s-marka" display="icon" />
+
+					<h:outputLabel for="s-model" value="Model" />
+					<p:inputText id="s-model" value="#" required="true"
+						requiredMessage="Provide model" validatorMessage="Too long model">
+						<f:validateLength maximum="25" />
+					</p:inputText>
+					<p:message for="s-model" display="icon" />
+
+					<h:outputLabel for="s-nadwozie" value="Type" />
+					<p:inputText id="s-nadwozie" value="#" required="true"
+						requiredMessage="Provide type"
+						validatorMessage="Too long type name">
+						<f:validateLength maximum="20" />
+					</p:inputText>
+					<p:message for="s-nadwozie" display="icon" />
+
+					<h:outputLabel for="s-moc" value="Power (HP)" />
+					<p:inputText id="s-moc" value="#" required="true"
+						requiredMessage="Provide car power (HP)"
+						validatorMessage="Too big!">
+						<f:validateLength maximum="10" />
+					</p:inputText>
+					<p:message for="s-moc" display="icon" />
+
 				</h:panelGrid>
+
+				<p:commandButton value="Save" action="#{rentEditBB.carSaveData()}"
+					style="margin-right: 1em;" update="@form" />
+
 			</h:form>
 		</p:panel>
-		</div>
 	</div>
 
 </h:body>

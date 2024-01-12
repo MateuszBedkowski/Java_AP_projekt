@@ -13,11 +13,13 @@ import jakarta.faces.context.FacesContext;
 import jakarta.faces.context.Flash;
 
 import com.jsf.dao.KlienciDAO;
+import com.jsf.dao.PracownicyDAO;
 import com.jsf.dao.SamochodyDAO;
 import com.jsf.dao.WypozyczenieDAO;
 import com.jsf.entities.Samochody;
 import com.jsf.entities.Wypozyczenie;
 import com.jsf.entities.Klienci;
+import com.jsf.entities.Pracownicy;
 
 @Named
 @RequestScoped
@@ -28,6 +30,7 @@ public class RentListBB {
     private String amount;
     private String kwota;
     private String client;
+    private String employee;
 
     @Inject
     ExternalContext extcontext;
@@ -43,6 +46,9 @@ public class RentListBB {
     
     @EJB
     KlienciDAO klienciDAO;
+    
+    @EJB
+    PracownicyDAO pracownicyDAO;
 
     public String getAmount() {
         return amount;
@@ -67,6 +73,14 @@ public class RentListBB {
     public void setClient(String client) {
     	this.client = client;
     }
+    
+    public String getEmployee() {
+    	return employee;
+    }
+    
+    public void setEmployee(String employee) {
+    	this.employee = employee;
+    }
 
     public List<Wypozyczenie> getFullList() {
         return wypozyczenieDAO.getFullList();
@@ -78,6 +92,10 @@ public class RentListBB {
     
     public List<Klienci> clientList(){
     	return klienciDAO.getFullList();
+    }
+    
+    public List<Pracownicy> employeeList(){
+    	return pracownicyDAO.getFullList();
     }
     
     public List<Wypozyczenie> getList() {
