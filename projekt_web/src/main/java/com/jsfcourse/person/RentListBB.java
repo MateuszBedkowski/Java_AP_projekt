@@ -104,8 +104,8 @@ public class RentListBB {
         // 1. Prepare search params
         Map<String, Object> searchParams = new HashMap<String, Object>();
 
-        if (amount != null && amount.length() > 0) {
-            searchParams.put("amount", amount);
+        if (kwota != null && kwota.length() > 0) {
+            searchParams.put("kwota", kwota);
         }
 
         // 2. Get list
@@ -114,19 +114,6 @@ public class RentListBB {
         return list;
     }
     
-    //Do poprawy
-    public List<Wypozyczenie> getAmountList(){
-    	List<Wypozyczenie> list = null;
-    	
-    	Map<String, Object> searchParams = new HashMap<String, Object>();
-    	
-    	if(kwota != null && kwota.length() > 0) {
-    		searchParams.put("kwota", amount);
-    	}
-    	
-    	
-    	return list;
-    }
 
     public String newRent() {
         Wypozyczenie wypozyczenie = new Wypozyczenie();

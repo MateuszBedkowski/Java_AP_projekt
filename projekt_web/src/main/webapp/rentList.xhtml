@@ -13,17 +13,15 @@
 </h:head>
 <h:body style="margin-left: 0.5em; margin-right: 0.5em;">
 
-	<div>
 	<p:panel header="Search" toggleable="true" collapsed="true" style="margin: 1em;">
 		<h:form>
 			<h:panelGrid columns="2" cellpadding="4">
-				<h:outputLabel value="Amount:" />
+				<h:outputLabel value="Amount:"/>
 				<p:inputText value="#{rentListBB.kwota}"/>
-				<p:commandButton value="Search" action="#{rentListBB.getAmountList()}" />
+				<p:commandButton value="Search" update="form-table" />
 			</h:panelGrid>
 		</h:form>
 	</p:panel>
-	</div>
 	<p:messages />
 
 	<h:form id="form-table" style="margin-bottom:1em; background:none; margin: 1em; padding: 4px;">

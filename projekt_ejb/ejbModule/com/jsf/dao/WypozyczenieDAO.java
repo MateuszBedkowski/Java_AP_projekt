@@ -46,14 +46,29 @@ public class WypozyczenieDAO {
 
     public List<Wypozyczenie> getList(Map<String, Object> searchParams) {
         List<Wypozyczenie> list = null;
+        
         String select = "SELECT w ";
         String from = "FROM Wypozyczenie w ";
         String where = "";
         String orderby = "ORDER BY w.kwota ASC";
 
-        // Add conditions based on searchParams...
+        // Serach for amount
+        
+        String kwota = (String) searchParams.get("kwota");
+		if (kwota != null) {
+			if (where.isEmpty()) {
+				where = "where ";
+			} else {
+				where += "and ";
+			}
+			where += "w.kwota like :kwota ";
+		}
 
         Query query = em.createQuery(select + from + where + orderby);
+        
+		if (kwota != null) {
+			query.setParameter("kwota", "%"+kwota+"%");
+		}
 
         // Set parameters...
 
@@ -64,26 +79,5 @@ public class WypozyczenieDAO {
         }
         return list;
     }
-    
-    //Do poprawy!!!
-    public List<Wypozyczenie> getAmountList(Map<String, Object> searchParams) {
-        List<Wypozyczenie> list = null;
-        String select = "SELECT w ";
-        String from = "FROM Wypozyczenie w ";
-        String where = "WHERE kwota LIKE w.kwota ";
-        String orderby = "ORDER BY w.poczatek ASC";
 
-        // Add conditions based on searchParams...
-
-        Query query = em.createQuery(select + from + where + orderby);
-
-        // Set parameters...
-
-        try {
-            list = query.getResultList();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
 }

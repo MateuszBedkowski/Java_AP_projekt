@@ -36,7 +36,7 @@ public class Wypozyczenie implements Serializable {
     private Date koniec;
 
     @Column(name = "kwota")
-    private Integer kwota;
+    private String kwota;
 
     @OneToOne
     @JoinColumn(name = "klienci_idklient", referencedColumnName = "idklient")
@@ -49,6 +49,13 @@ public class Wypozyczenie implements Serializable {
     @OneToOne
     @JoinColumn(name = "pracownicy_idpracownik", referencedColumnName = "idpracownik")
     private Pracownicy pracownicy;
+    
+	public void log(String text) {
+		System.out.println(text + ": [" + idwypozyczenie + "], " + poczatek + ", " + koniec + ", " + kwota + ", " + klienci + ", " + samochody + ", " + pracownicy);
+	}
+	
+	public Wypozyczenie() {
+	}
 
     
     public Integer getIdwypozyczenie() {
@@ -75,11 +82,11 @@ public class Wypozyczenie implements Serializable {
         this.koniec = koniec;
     }
 
-    public Integer getKwota() {
+    public String getKwota() {
         return kwota;
     }
 
-    public void setKwota(Integer kwota) {
+    public void setKwota(String kwota) {
         this.kwota = kwota;
     }
 
