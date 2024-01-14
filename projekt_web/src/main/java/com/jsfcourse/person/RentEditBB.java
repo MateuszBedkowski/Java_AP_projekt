@@ -117,7 +117,7 @@ public class RentEditBB implements Serializable {
     
 //Samochody
     public void carOnLoad() throws IOException {
-        carLoaded = (Samochody) flash.get("car");
+        carLoaded = (Samochody) flash.get("samochod");
 
         if (carLoaded != null) {
             car = carLoaded;
@@ -154,7 +154,7 @@ public class RentEditBB implements Serializable {
 
 //Klienci
     public void clientOnLoad() throws IOException {
-        clientLoaded = (Klienci) flash.get("client");
+        clientLoaded = (Klienci) flash.get("klienci");
 
         if (clientLoaded != null) {
             client = clientLoaded;
@@ -191,7 +191,7 @@ public class RentEditBB implements Serializable {
     
 //Pracownicy
     public void employeeOnLoad() throws IOException {
-        employeeLoaded = (Pracownicy) flash.get("employee");
+        employeeLoaded = (Pracownicy) flash.get("pracownicy");
 
         if (employeeLoaded != null) {
             employee= employeeLoaded;
@@ -208,7 +208,7 @@ public class RentEditBB implements Serializable {
         }
 
         try {
-        	if (employee.getIdpracownik() == 0) {
+        	if (employee.getIdpracownik() == null) {
                 // new record
                 pracownicyDAO.create(employee);
             } else {

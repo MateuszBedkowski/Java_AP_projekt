@@ -17,13 +17,17 @@ public class Pracownicy implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idpracownik;
+	private Integer idpracownik;
 
 	private String imie;
 
 	private String nazwisko;
 
 	private String stanowisko;
+	
+	private String login;
+	
+	private String haslo;
 
 	//bi-directional many-to-one association to Role
 	@ManyToOne
@@ -32,11 +36,11 @@ public class Pracownicy implements Serializable {
 	public Pracownicy() {
 	}
 
-	public int getIdpracownik() {
+	public Integer getIdpracownik() {
 		return this.idpracownik;
 	}
 
-	public void setIdpracownik(int idpracownik) {
+	public void setIdpracownik(Integer idpracownik) {
 		this.idpracownik = idpracownik;
 	}
 
@@ -70,6 +74,22 @@ public class Pracownicy implements Serializable {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+	
+	public String getLogin() {
+		return this.login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	
+	public String getHaslo() {
+		return this.haslo;
+	}
+
+	public void setHaslo(String haslo) {
+		this.haslo = haslo;
 	}
 
 }

@@ -17,7 +17,7 @@ public class Klienci implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(unique = true, nullable = false)
-	private int idklient;
+	private Integer idklient;
 
 	private String imie;
 
@@ -34,7 +34,7 @@ public class Klienci implements Serializable {
 		return this.idklient;
 	}
 
-	public void setIdklient(int idklient) {
+	public void setIdklient(Integer idklient) {
 		this.idklient = idklient;
 	}
 
