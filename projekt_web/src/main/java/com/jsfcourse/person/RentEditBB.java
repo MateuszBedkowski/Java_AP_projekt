@@ -14,6 +14,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 
+import com.jsf.dao.RoleDAO;
 import com.jsf.dao.SamochodyDAO;
 import com.jsf.dao.KlienciDAO;
 import com.jsf.dao.PracownicyDAO;
@@ -22,6 +23,7 @@ import com.jsf.entities.Samochody;
 import com.jsf.entities.Wypozyczenie;
 import com.jsf.entities.Klienci;
 import com.jsf.entities.Pracownicy;
+import com.jsf.entities.Role;
 
 @Named
 @ViewScoped
@@ -42,6 +44,9 @@ public class RentEditBB implements Serializable {
     
     private Pracownicy employee = new Pracownicy();
     private Pracownicy employeeLoaded = null;
+    
+    private Integer id;
+    private String nazwa;
 
     @EJB
     WypozyczenieDAO wypozyczenieDAO;
@@ -54,6 +59,9 @@ public class RentEditBB implements Serializable {
     
     @EJB
     PracownicyDAO pracownicyDAO;
+    
+    @EJB
+    RoleDAO roleDAO;
 
     @Inject
     FacesContext context;
@@ -98,8 +106,10 @@ public class RentEditBB implements Serializable {
         }
 
         try {
-        	if (wypozyczenie.getIdwypozyczenie() == 0) {
+        	if (wypozyczenie.getIdwypozyczenie() == null) {
                 // new record
+        		wypozyczenie.setKlienci(klienciDAO.find(id));
+        		wypozyczenie.setPracownicy(pracownicyDAO.find(id));
                 wypozyczenieDAO.create(wypozyczenie);
             } else {
                 // existing record
@@ -128,13 +138,10 @@ public class RentEditBB implements Serializable {
     
 
     public String carSaveData() {
-        // no Wypozyczenie object passed
-        if (carLoaded == null) {
-            return PAGE_STAY_AT_THE_SAME;
-        }
+
 
         try {
-        	if (car.getIdsamochod() == 0) {
+        	if (car.getIdsamochod() == null) {
                 // new record
                 samochodyDAO.create(car);
             } else {
@@ -148,7 +155,7 @@ public class RentEditBB implements Serializable {
             return PAGE_STAY_AT_THE_SAME;
         }
 
-        return PAGE_RENT_LIST;
+        return PAGE_STAY_AT_THE_SAME;
     }
     
 
@@ -165,13 +172,9 @@ public class RentEditBB implements Serializable {
     
 
     public String clientSaveData() {
-        // no Wypozyczenie object passed
-        if (clientLoaded == null) {
-            return PAGE_STAY_AT_THE_SAME;
-        }
 
         try {
-        	if (client.getIdklient() == 0) {
+        	if (client.getIdklient() == null) {
                 // new record
                 klienciDAO.create(client);
             } else {
@@ -185,7 +188,7 @@ public class RentEditBB implements Serializable {
             return PAGE_STAY_AT_THE_SAME;
         }
 
-        return PAGE_RENT_LIST;
+        return PAGE_STAY_AT_THE_SAME;
     }
     
     
@@ -202,14 +205,12 @@ public class RentEditBB implements Serializable {
     
 
     public String employeeSaveData() {
-        // no Wypozyczenie object passed
-        if (employeeLoaded == null) {
-            return PAGE_STAY_AT_THE_SAME;
-        }
+
 
         try {
         	if (employee.getIdpracownik() == null) {
                 // new record
+        		employee.setRole(roleDAO.findByName(nazwa));
                 pracownicyDAO.create(employee);
             } else {
                 // existing record
@@ -222,7 +223,7 @@ public class RentEditBB implements Serializable {
             return PAGE_STAY_AT_THE_SAME;
         }
 
-        return PAGE_RENT_LIST;
+        return PAGE_STAY_AT_THE_SAME;
     }
 
 }

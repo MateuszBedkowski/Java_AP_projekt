@@ -12,6 +12,7 @@ import jakarta.faces.context.ExternalContext;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.context.Flash;
 
+import com.jsf.dao.RoleDAO;
 import com.jsf.dao.KlienciDAO;
 import com.jsf.dao.PracownicyDAO;
 import com.jsf.dao.SamochodyDAO;
@@ -20,6 +21,7 @@ import com.jsf.entities.Samochody;
 import com.jsf.entities.Wypozyczenie;
 import com.jsf.entities.Klienci;
 import com.jsf.entities.Pracownicy;
+import com.jsf.entities.Role;
 
 @Named
 @RequestScoped
@@ -29,8 +31,9 @@ public class RentListBB {
 
     private String amount;
     private String kwota;
-    private String client;
-    private String employee;
+    private Klienci client;
+    private Pracownicy employee;
+    private Role role;
 
     @Inject
     ExternalContext extcontext;
@@ -49,6 +52,9 @@ public class RentListBB {
     
     @EJB
     PracownicyDAO pracownicyDAO;
+    
+    @EJB
+    RoleDAO roleDAO;
 
     public String getAmount() {
         return amount;
@@ -66,20 +72,28 @@ public class RentListBB {
     	this.kwota = kwota;
     }
     
-    public String getClient() {
+    public Klienci getClient() {
     	return client;
     }
     
-    public void setClient(String client) {
+    public void setClient(Klienci client) {
     	this.client = client;
     }
     
-    public String getEmployee() {
+    public Pracownicy getEmployee() {
     	return employee;
     }
     
-    public void setEmployee(String employee) {
+    public void setEmployee(Pracownicy employee) {
     	this.employee = employee;
+    }
+    
+    public Role getRole() {
+    	return role;
+    }
+    
+    public void setRole(Role role) {
+    	this.role = role;
     }
 
     public List<Wypozyczenie> getFullList() {
@@ -96,6 +110,10 @@ public class RentListBB {
     
     public List<Pracownicy> employeeList(){
     	return pracownicyDAO.getFullList();
+    }
+    
+    public List<Role> roleList(){
+    	return roleDAO.getFullList();
     }
     
     public List<Wypozyczenie> getList() {

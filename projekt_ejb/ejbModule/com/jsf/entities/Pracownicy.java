@@ -28,6 +28,9 @@ public class Pracownicy implements Serializable {
 	private String login;
 	
 	private String haslo;
+	
+	private Integer idrola;
+	
 
 	//bi-directional many-to-one association to Role
 	@ManyToOne
@@ -67,6 +70,15 @@ public class Pracownicy implements Serializable {
 	public void setStanowisko(String stanowisko) {
 		this.stanowisko = stanowisko;
 	}
+	
+	public Integer getRola() {
+		return this.idrola;
+	}
+	
+	public void setRola(Integer idrola) {
+		this.idrola = idrola;
+	}
+	
 
 	public Role getRole() {
 		return this.role;
@@ -91,5 +103,6 @@ public class Pracownicy implements Serializable {
 	public void setHaslo(String haslo) {
 		this.haslo = haslo;
 	}
+
 
 }

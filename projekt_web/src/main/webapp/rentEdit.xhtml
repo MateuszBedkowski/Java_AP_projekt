@@ -62,13 +62,14 @@
 				</p:selectOneListbox>
 
 				<p />
+				
 				<h:outputLabel value="Employee" />
 				<p:selectOneListbox id="employee" value="#{rentListBB.employee}"
 					var="employee" filter="true" filterMatchMode="contains"
 					filterNormalize="true">
 					<f:selectItems value="#{rentListBB.employeeList()}" var="employee"
 						itemLabel="#{employee.imie} #{employee.nazwisko}"
-						itemValue="#{employee}" />
+						itemValue="#{employee.id}" />
 					<p:column>
 						<h:outputText value="#{employee.imie} #{employee.nazwisko}" />
 					</p:column>

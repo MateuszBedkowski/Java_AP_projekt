@@ -36,11 +36,11 @@ public class Samochody implements Serializable {
 		getIdsamochod(samochod);
 	}
 
-	public int getIdsamochod(Samochody samochod) {
+	public Integer getIdsamochod(Samochody samochod) {
 		return samochod.idsamochod;
 	}
 	
-	public int getIdsamochod() {
+	public Integer getIdsamochod() {
 		return this.idsamochod;
 	}
 

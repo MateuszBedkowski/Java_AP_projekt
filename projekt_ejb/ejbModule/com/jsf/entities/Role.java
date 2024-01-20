@@ -17,13 +17,13 @@ public class Role implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idrola;
+	private Integer idrola;
 
 	private String nazwa;
 
 	//bi-directional many-to-one association to Pracownicy
 	@OneToMany(mappedBy="role")
-	private List<Pracownicy> pracownicies;
+	private List<Pracownicy> pracownicy;
 
 	public Role() {
 	}
@@ -32,7 +32,7 @@ public class Role implements Serializable {
 		return this.idrola;
 	}
 
-	public void setIdrola(int idrola) {
+	public void setIdrola(Integer idrola) {
 		this.idrola = idrola;
 	}
 
@@ -45,11 +45,11 @@ public class Role implements Serializable {
 	}
 
 	public List<Pracownicy> getPracownicies() {
-		return this.pracownicies;
+		return this.pracownicy;
 	}
 
-	public void setPracownicies(List<Pracownicy> pracownicies) {
-		this.pracownicies = pracownicies;
+	public void setPracownicies(List<Pracownicy> pracownicy) {
+		this.pracownicy = pracownicy;
 	}
 
 	public Pracownicy addPracownicy(Pracownicy pracownicy) {
