@@ -70,17 +70,19 @@
 					<p:message for="p-login" display="icon" />
 
 					<h:outputLabel for="p-haslo" value="Password" />
-					<p:inputText id="p-haslo" value="#{rentEditBB.pracownicy.haslo}"
-						required="true" requiredMessage="Provide password"
+					<p:inputText id="p-haslo" type="password"
+						value="#{rentEditBB.pracownicy.haslo}" required="true"
+						requiredMessage="Provide password"
 						validatorMessage="Too long password">
 						<f:validateLength maximum="50" />
 					</p:inputText>
 					<p:message for="p-haslo" display="icon" />
 
-					<h:outputLabel for="role" value="Rola" />
-					<p:selectOneListbox id="role" value="#{rentListBB.rola}" var="role">
+					<h:outputLabel for="p-role" value="Role" />
+					<p:selectOneListbox id="p-role" value="#{rentListBB.role}"
+						var="role">
 						<f:selectItems value="#{rentListBB.roleList()}" var="role"
-							itemLabel="#{role.idrola}" itemValue="#{role.nazwa}" />
+							itemLabel="#{role.idrola}" itemValue="#{role.idrola}" />
 						<p:column>
 							<h:outputText value="#{role}" />
 						</p:column>

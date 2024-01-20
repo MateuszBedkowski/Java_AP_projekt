@@ -69,7 +69,7 @@
 					filterNormalize="true">
 					<f:selectItems value="#{rentListBB.employeeList()}" var="employee"
 						itemLabel="#{employee.imie} #{employee.nazwisko}"
-						itemValue="#{employee.id}" />
+						itemValue="#{employee}" />
 					<p:column>
 						<h:outputText value="#{employee.imie} #{employee.nazwisko}" />
 					</p:column>

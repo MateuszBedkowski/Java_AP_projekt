@@ -45,6 +45,9 @@ public class RentEditBB implements Serializable {
     private Pracownicy employee = new Pracownicy();
     private Pracownicy employeeLoaded = null;
     
+    private Role role = new Role();
+    private Role roleLoaded = null;
+    
     private Integer id;
     private String nazwa;
 
@@ -85,6 +88,10 @@ public class RentEditBB implements Serializable {
     
     public Pracownicy getPracownicy() {
     	return employee;
+    }
+    
+    public Role getRole() {
+    	return role;
     }
     
 //Wypozyczenie
@@ -210,7 +217,7 @@ public class RentEditBB implements Serializable {
         try {
         	if (employee.getIdpracownik() == null) {
                 // new record
-        		employee.setRole(roleDAO.findByName(nazwa));
+//        		employee.setRole(roleDAO.findByName(nazwa));
                 pracownicyDAO.create(employee);
             } else {
                 // existing record

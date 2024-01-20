@@ -28,7 +28,7 @@ public class Role implements Serializable {
 	public Role() {
 	}
 
-	public int getIdrola() {
+	public Integer getIdrola() {
 		return this.idrola;
 	}
 

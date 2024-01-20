@@ -29,7 +29,7 @@ public class Pracownicy implements Serializable {
 	
 	private String haslo;
 	
-	private Integer idrola;
+	//private Integer idrola;
 	
 
 	//bi-directional many-to-one association to Role
@@ -71,13 +71,13 @@ public class Pracownicy implements Serializable {
 		this.stanowisko = stanowisko;
 	}
 	
-	public Integer getRola() {
-		return this.idrola;
-	}
-	
-	public void setRola(Integer idrola) {
-		this.idrola = idrola;
-	}
+//	public Integer getRola() {
+//		return this.idrola;
+//	}
+//	
+//	public void setRola(Integer idrola) {
+//		this.idrola = idrola;
+//	}
 	
 
 	public Role getRole() {
