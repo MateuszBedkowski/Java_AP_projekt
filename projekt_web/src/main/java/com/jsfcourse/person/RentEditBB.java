@@ -3,7 +3,12 @@ package com.jsfcourse.person;
 import java.io.IOException;
 import java.io.Serializable;
 
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.convert.Converter;
+import jakarta.faces.convert.FacesConverter;
 import jakarta.ejb.EJB;
+import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.context.Flash;
@@ -46,10 +51,12 @@ public class RentEditBB implements Serializable {
     private Pracownicy employeeLoaded = null;
     
     private Role role = new Role();
+    private Role role_input = new Role();
     private Role roleLoaded = null;
     
     private Integer id;
     private String nazwa;
+    private Integer id_input;
 
     @EJB
     WypozyczenieDAO wypozyczenieDAO;
@@ -92,6 +99,16 @@ public class RentEditBB implements Serializable {
     
     public Role getRole() {
     	return role;
+    }
+    
+    public void roleOnLoad() throws IOException {
+        roleLoaded = (Role) flash.get("role");
+
+        if (roleLoaded != null) {
+            role = roleLoaded;
+        } else {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Błędne użycie systemu", null));
+        }
     }
     
 //Wypozyczenie
@@ -211,13 +228,40 @@ public class RentEditBB implements Serializable {
     }
     
 
+//    public String employeeSaveData() {
+//
+//    	System.out.println("Entering employeeSaveData method");
+//        try {
+//        	if (employee.getIdpracownik() == null) {
+//                // new record
+//        		employee.setRole(roleDAO.find(id_input));
+//                pracownicyDAO.create(employee);
+//            } else {
+//                // existing record
+//                pracownicyDAO.merge(employee);
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            context.addMessage(null,
+//                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "wystąpił błąd podczas zapisu", null));
+//            return PAGE_STAY_AT_THE_SAME;
+//        }
+//
+//        return PAGE_STAY_AT_THE_SAME;
+//    }
+    
     public String employeeSaveData() {
-
-
         try {
-        	if (employee.getIdpracownik() == null) {
+            if (employee.getIdpracownik() == null) {
                 // new record
-//        		employee.setRole(roleDAO.findByName(nazwa));
+//                Integer selectedRoleId = RentEditBB.getPracownicy().getRole().getIdrola();
+//                Role selectedRole = roleDAO.find(selectedRoleId);
+//                employee.setRole(selectedRole);
+//            	Role role = new Role();
+//            	role.setIdrola(2);
+//            	role.setNazwa("user");
+            	Role role = roleDAO.find(2);
+            	employee.setRole(role);
                 pracownicyDAO.create(employee);
             } else {
                 // existing record
@@ -225,12 +269,19 @@ public class RentEditBB implements Serializable {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            context.addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "wystąpił błąd podczas zapisu", null));
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "wystąpił błąd podczas zapisu", null));
             return PAGE_STAY_AT_THE_SAME;
         }
 
         return PAGE_STAY_AT_THE_SAME;
     }
+
+    
+    
+    public String getRoleName(Integer roleId) {
+        Role role = roleDAO.find(roleId);
+        return (role != null) ? role.getNazwa() : "";
+    }
+
 
 }

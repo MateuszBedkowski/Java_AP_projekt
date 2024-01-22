@@ -37,6 +37,8 @@ public class Pracownicy implements Serializable {
 	private Role role;
 
 	public Pracownicy() {
+		this.role = new Role();
+	
 	}
 
 	public Integer getIdpracownik() {

@@ -31,7 +31,7 @@
 	<div class="add-object"
 		style="display: flex; grid-row: 1/span 2; margin-left: 20 px; margin-right: 20px; column-gap: 20px; display: flex; justify-content: center; align-items: center; padding: 10px;">
 		<p:panel header="New Employee">
-			<h:form rendered="#{rentEditBB.pracownicy != null}">
+			<h:form>
 
 				<h:panelGrid columns="3" cellpadding="5">
 
@@ -77,23 +77,24 @@
 						<f:validateLength maximum="50" />
 					</p:inputText>
 					<p:message for="p-haslo" display="icon" />
-
-					<h:outputLabel for="p-role" value="Role" />
-					<p:selectOneListbox id="p-role" value="#{rentListBB.role}"
-						var="role">
-						<f:selectItems value="#{rentListBB.roleList()}" var="role"
-							itemLabel="#{role.idrola}" itemValue="#{role.idrola}" />
+					
+<!--   					<h:outputLabel for="p-role" value="Role" />
+					<p:selectOneListbox id="p-role" converter="roleConverter"
+						value="#{rentEditBB.pracownicy.role}" var="r">
+						<f:selectItems value="#{rentListBB.roleList()}" var="p"
+							itemLabel="#{p.nazwa}" itemValue="#{p}" required="false"/>
 						<p:column>
-							<h:outputText value="#{role}" />
+							<h:outputText value="#{r.nazwa}" />
 						</p:column>
 					</p:selectOneListbox>
+					<p:messages for="p-role" display="icon" />
+-->
 
 				</h:panelGrid>
 
 
-				<p:commandButton value="Add"
-					action="#{rentEditBB.employeeSaveData()}"
-					style="margin-right: 1em;" />
+				<p:commandButton value="Add" action="#{rentEditBB.employeeSaveData()}"
+					style="margin-right: 1em;" update="@form"  />
 			</h:form>
 		</p:panel>
 

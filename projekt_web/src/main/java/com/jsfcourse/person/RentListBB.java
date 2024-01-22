@@ -116,6 +116,10 @@ public class RentListBB {
     	return roleDAO.getFullList();
     }
     
+    public Role getRolebyId(Integer id) {
+    	return roleDAO.find(id);
+    }
+    
     public List<Wypozyczenie> getList() {
         List<Wypozyczenie> list = null;
 
