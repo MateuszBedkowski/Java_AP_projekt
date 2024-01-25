@@ -78,17 +78,14 @@
 					</p:inputText>
 					<p:message for="p-haslo" display="icon" />
 					
-<!--   					<h:outputLabel for="p-role" value="Role" />
-					<p:selectOneListbox id="p-role" converter="roleConverter"
-						value="#{rentEditBB.pracownicy.role}" var="r">
-						<f:selectItems value="#{rentListBB.roleList()}" var="p"
-							itemLabel="#{p.nazwa}" itemValue="#{p}" required="false"/>
-						<p:column>
-							<h:outputText value="#{r.nazwa}" />
-						</p:column>
+      				<h:outputLabel for="p-role" value="Role" />
+					<p:selectOneListbox id="p-role" value="#{rentEditBB.idrola}" var="r">
+					    <f:selectItems value="#{rentListBB.roleList()}" var="p" itemLabel="#{p.nazwa}" itemValue="#{p.idrola}" required="false"/>
+					    <p:column>
+					        <h:outputText value="#{r}" />
+					    </p:column>
 					</p:selectOneListbox>
 					<p:messages for="p-role" display="icon" />
--->
 
 				</h:panelGrid>
 

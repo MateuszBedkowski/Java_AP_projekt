@@ -50,13 +50,61 @@ public class RentEditBB implements Serializable {
     private Pracownicy employee = new Pracownicy();
     private Pracownicy employeeLoaded = null;
     
-    private Role role = new Role();
-    private Role role_input = new Role();
     private Role roleLoaded = null;
     
-    private Integer id;
-    private String nazwa;
-    private Integer id_input;
+    private Role role;
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+    
+    private Integer clientId;
+    
+    public Integer getClientId() {
+		return clientId;
+	}
+
+	public void setClientId(Integer clientId) {
+		this.clientId = clientId;
+	}
+
+
+	private Integer employeeId;
+    
+    public Integer getEmployeeId() {
+		return employeeId;
+	}
+
+	public void setEmployeeId(Integer employeeId) {
+		this.employeeId = employeeId;
+	}
+
+
+	private Integer idrola;
+    public Integer getIdrola() {
+		return idrola;
+	}
+
+	public void setIdrola(Integer idrola) {
+		this.idrola = idrola;
+	}
+
+
+	private String roleName;
+    public String getRoleName() {
+		return roleName;
+	}
+
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
+
+
+	private Integer id;
 
     @EJB
     WypozyczenieDAO wypozyczenieDAO;
@@ -97,9 +145,6 @@ public class RentEditBB implements Serializable {
     	return employee;
     }
     
-    public Role getRole() {
-    	return role;
-    }
     
     public void roleOnLoad() throws IOException {
         roleLoaded = (Role) flash.get("role");
@@ -132,11 +177,13 @@ public class RentEditBB implements Serializable {
         try {
         	if (wypozyczenie.getIdwypozyczenie() == null) {
                 // new record
-        		wypozyczenie.setKlienci(klienciDAO.find(id));
-        		wypozyczenie.setPracownicy(pracownicyDAO.find(id));
+        		wypozyczenie.setKlienci(klienciDAO.find(clientId));
+        		wypozyczenie.setPracownicy(pracownicyDAO.find(employeeId));
                 wypozyczenieDAO.create(wypozyczenie);
             } else {
                 // existing record
+            	wypozyczenie.setKlienci(klienciDAO.find(clientId));
+        		wypozyczenie.setPracownicy(pracownicyDAO.find(employeeId));
                 wypozyczenieDAO.merge(wypozyczenie);
             }
         } catch (Exception e) {
@@ -227,47 +274,19 @@ public class RentEditBB implements Serializable {
         }
     }
     
-
-//    public String employeeSaveData() {
-//
-//    	System.out.println("Entering employeeSaveData method");
-//        try {
-//        	if (employee.getIdpracownik() == null) {
-//                // new record
-//        		employee.setRole(roleDAO.find(id_input));
-//                pracownicyDAO.create(employee);
-//            } else {
-//                // existing record
-//                pracownicyDAO.merge(employee);
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            context.addMessage(null,
-//                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "wystąpił błąd podczas zapisu", null));
-//            return PAGE_STAY_AT_THE_SAME;
-//        }
-//
-//        return PAGE_STAY_AT_THE_SAME;
-//    }
-    
     public String employeeSaveData() {
         try {
             if (employee.getIdpracownik() == null) {
-                // new record
-//                Integer selectedRoleId = RentEditBB.getPracownicy().getRole().getIdrola();
-//                Role selectedRole = roleDAO.find(selectedRoleId);
-//                employee.setRole(selectedRole);
-//            	Role role = new Role();
-//            	role.setIdrola(2);
-//            	role.setNazwa("user");
-            	Role role = roleDAO.find(2);
+            	
+            	Role role = roleDAO.find(idrola);
             	employee.setRole(role);
                 pracownicyDAO.create(employee);
+                
             } else {
-                // existing record
                 pracownicyDAO.merge(employee);
             }
         } catch (Exception e) {
+        	
             e.printStackTrace();
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "wystąpił błąd podczas zapisu", null));
             return PAGE_STAY_AT_THE_SAME;
@@ -276,7 +295,6 @@ public class RentEditBB implements Serializable {
         return PAGE_STAY_AT_THE_SAME;
     }
 
-    
     
     public String getRoleName(Integer roleId) {
         Role role = roleDAO.find(roleId);

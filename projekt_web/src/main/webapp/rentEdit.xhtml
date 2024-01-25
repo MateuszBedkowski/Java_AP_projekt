@@ -49,29 +49,31 @@
 				</p:inputText>
 				<p:message for="w-koniec" display="icon" />
 
+
+
 				<h:outputLabel value="Client" />
-				<p:selectOneListbox id="client" value="#{rentListBB.client}"
+				<p:selectOneListbox id="client" value="#{rentEditBB.clientId}"
 					var="client" filter="true" filterMatchMode="contains"
 					filterNormalize="true">
-					<f:selectItems value="#{rentListBB.clientList()}" var="client"
-						itemLabel="#{client.imie} #{client.nazwisko}"
-						itemValue="#{client}" />
+					<f:selectItems value="#{rentListBB.clientList()}" var="c"
+						itemLabel="#{c.imie} #{c.nazwisko}"
+						itemValue="#{c.idklient}" />
 					<p:column>
-						<h:outputText value="#{client.imie} #{client.nazwisko}" />
+						<h:outputText value="#{client}" />
 					</p:column>
 				</p:selectOneListbox>
 
 				<p />
 				
 				<h:outputLabel value="Employee" />
-				<p:selectOneListbox id="employee" value="#{rentListBB.employee}"
+				<p:selectOneListbox id="employee" value="#{rentEditBB.employeeId}"
 					var="employee" filter="true" filterMatchMode="contains"
 					filterNormalize="true">
-					<f:selectItems value="#{rentListBB.employeeList()}" var="employee"
-						itemLabel="#{employee.imie} #{employee.nazwisko}"
-						itemValue="#{employee}" />
+					<f:selectItems value="#{rentListBB.employeeList()}" var="e"
+						itemLabel="#{e.imie} #{e.nazwisko}"
+						itemValue="#{e.idpracownik}" />
 					<p:column>
-						<h:outputText value="#{employee.imie} #{employee.nazwisko}" />
+						<h:outputText value="#{employee}" />
 					</p:column>
 				</p:selectOneListbox>
 			</h:panelGrid>
