@@ -169,4 +169,8 @@ public class RentListBB {
         wypozyczenieDAO.remove(wypozyczenie);
         return PAGE_STAY_AT_THE_SAME;
     }
+    
+   public Role getRoleById(Integer id) {
+	   return roleDAO.find(id);
+   }
 }

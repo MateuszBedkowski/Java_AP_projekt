@@ -82,7 +82,7 @@
 					<p:selectOneListbox id="p-role" value="#{rentEditBB.idrola}" var="r">
 					    <f:selectItems value="#{rentListBB.roleList()}" var="p" itemLabel="#{p.nazwa}" itemValue="#{p.idrola}" required="false"/>
 					    <p:column>
-					        <h:outputText value="#{r}" />
+					        <h:outputText value="#{rentListBB.getRoleById(r).nazwa}" />
 					    </p:column>
 					</p:selectOneListbox>
 					<p:messages for="p-role" display="icon" />
